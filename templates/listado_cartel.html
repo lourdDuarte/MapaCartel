@@ -49,7 +49,7 @@
                           <td><img class="img-cartel" src="/media/{{ c.imagen_cartel }}"></td>
                           <td>
                             <a href="{% url 'actualizar' c.id %}"><i class="fa-regular fa-pen-to-square" style="color: #1558c3; font-size:25px"></i></a>
-                            <a href="http://"><i class="fa-solid fa-trash" style="color: #1558c3;font-size:25px"></i></a>
+                            <a href="{% url 'eliminar' c.id %}"><i class="fa-solid fa-trash" style="color: #1558c3;font-size:25px"></i></a>
                           </td>
                           
                         </tr>

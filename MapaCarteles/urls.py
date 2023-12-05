@@ -26,6 +26,7 @@ urlpatterns = [
     path('dashboard/', CartelTemplateView.view_dashboard, name = 'dashboard'),
     path('formulario/', CartelTemplateView.add_new_cartel, name = 'formulario'),
     path('actualizar/<str:pk>/', CartelTemplateView.actualizar_cartel, name = 'actualizar'),
+    path('eliminar/<str:pk>/', CartelTemplateView.eliminar_cartel, name = 'eliminar'),
     path('listado/', CartelTemplateView.listado_cartel, name = 'listado'),
     path('login/', CartelTemplateView.login, name = 'login'),
     path('logout/', CartelTemplateView.logout_view, name = 'logout'),
