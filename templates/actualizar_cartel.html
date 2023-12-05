@@ -1,0 +1,109 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block head_content %}
+
+    <title>Actualizar cartel</title>
+{% endblock head_content %}
+
+{% block container %}
+<main id="main" class="main main-class">
+    <div class="pagetitle pegatitle-margin">
+        <h1>Actualizar cartel</h1>
+        <nav>
+          <ol class="breadcrumb ol-margin">
+            <li class="breadcrumb-item item-style"><a href="{% url 'listado'%}">Actualizar carteles</a></li>
+            <li class="breadcrumb-item item-style"><a target="_blank" href="{% url 'mapa'  %}">Ver Mapa</a></li>
+            <li class="breadcrumb-item item-style"><a href="{% url 'listado'  %}">Listado</a></li>
+            <li class="breadcrumb-item item-style"><a href="{% url 'logout'  %}">Salir</a></li>
+           
+          </ol>
+        </nav>
+    </div><!-- End Page Title -->
+    <section class="section">
+        <div class="row">
+          <div class="col-lg-6">
+    
+            <div class="card div-form">
+              <div class="card-body">
+               
+    
+                <!-- Horizontal Form -->
+                <form role="form" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li
+                                {% if message.tags %} 
+                                    class="{{ message.tags }}"
+                                {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                    <div style="display:none" >
+                        {{form.cartel.errors}}
+                        <label for="{{form.usuario.id_for_label}}" class="col-lg-3 control-label">usuario</label>
+                        {{form.usuario}}
+                    </div>
+                    <div class="col-12 div-input">
+                       {{form.cartel.errors}}
+                        <label for="{{form.nombre.id_for_label}}" class="col-lg-3 control-label">Nombre de la obra </label>
+                       {{form.nombre}}
+                        
+                    </div>
+                    <div class="col-12 div-input">
+                        {{form.cartel.errors}}
+                         <label for="{{form.latitud.id_for_label}}" class="col-lg-3 control-label">Latitud</label>
+                        {{form.latitud}}
+                         
+                     </div>
+                     <div class="col-12 div-input">
+                        {{form.cartel.errors}}
+                         <label for="{{form.longitud.id_for_label}}" class="col-lg-3 control-label">Longitud</label>
+                        {{form.longitud}}
+                         
+                     </div>
+                     <div class="col-12 div-input">
+                        {{form.cartel.errors}}
+                         <label for="{{form.direccion.id_for_label}}" class="col-lg-3 control-label">Direccion</label>
+                        {{form.direccion}}
+                         
+                     </div>
+                     <div class="col-12 div-input">
+                      {{form.cartel.errors}}
+                       <label for="{{form.proveedor.id_for_label}}" class="col-lg-3 control-label">Proveedor</label>
+                      {{form.proveedor}}
+                       
+                   </div>
+                     <div class="col-12 div-input">
+                        {{form.cartel.errors}}
+                         <label for="{{form.localidad.id_for_label}}" class="col-lg-3 control-label">Localidad</label>
+                        {{form.localidad}}
+                         
+                     </div>
+                     <div class="col-12 div-input">
+                        {{form.cartel.errors}}
+                         <label for="{{form.imagen_cartel.id_for_label}}" class="col-lg-3 control-label">Imagen</label>
+                        {{form.imagen_cartel}}
+                         
+                     </div>
+                    
+                  
+                  <div class="text-center">
+                    <button type="submit" style="background: #1558c3;" class="btn btn-primary btn-margin">Actualizar</button>
+                    
+                  </div>
+                </form><!-- End Horizontal Form -->
+    
+              </div>
+            </div>
+        </div>
+    </section>
+
+
+</main>
+
+
+{% endblock container %}

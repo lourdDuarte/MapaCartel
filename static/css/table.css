@@ -1,0 +1,19 @@
+.td-status-expired{
+    background: rgb(150, 10, 10);
+    color: #fff;
+    border-radius: 10px;  
+    text-align: center;
+    width: 100px;
+    height: 50px;
+    
+}
+
+.td-status-available{
+    background: rgb(19, 148, 14);
+    color: #fff;
+    border-radius: 10px;  
+    text-align: center;
+    width: 100px;
+    height: 50px;
+    
+}

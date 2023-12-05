@@ -1,0 +1,8 @@
+.div-class{
+    background: #fff;
+    justify-content: center; 
+    width: 50%; 
+    margin: 0 auto; 
+    padding-left: 200px; 
+    border-radius: 10px;
+}

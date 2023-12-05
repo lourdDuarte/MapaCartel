@@ -1,0 +1,227 @@
+.map {
+  height: 890px;
+  width: 99%;
+  margin-left: 0.5em;
+  margin-top: 1em;
+  z-index: 1;
+  border: 3px solid rgb(21, 88, 195);
+}
+
+.ol-popup-filter{
+    position: absolute;
+    display: flex; 
+    -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+    filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+    background-color: rgb(0, 0, 0);
+    padding: 10px;
+    bottom: 40%;
+    left: 60em;
+    top: 10em;
+    border-radius: 10px;
+    width: 34em;
+    height: 230px;
+    border: 2px solid rgb(21, 88, 195);
+    
+  }
+  .ol-popup-filter, .ol-popup-content-filter, .ol-popup-content-reference {
+    z-index: 1;
+    width: 25em;
+    height: 230px;
+    margin-left: 3.5em;
+    
+    background-color: rgb(243, 237, 237);
+     
+   }
+ 
+  .ol-popup-reference{
+    background-color: transparent;
+    position: absolute;
+    width: 15em;
+    height: 120px;
+    top: 20em;
+  }
+
+  .ol-popup-content-reference{
+    width: 20em;
+    height: 250px;
+    margin-left: -4px;
+    border-radius: 10px;
+    border: 2px solid black;
+  }
+
+  .ol-popup-content-reference p{
+    text-align: center;
+    margin-top: 5px;
+    font-weight: 500;
+   
+  }
+
+  
+  .ol-popup-content-filter h2{
+    color: #ffff;
+    font-size: 26px;
+    
+  }
+
+  .content-btn{
+    background: #020202;
+    align-items: center;
+    height: 1000px;
+  }
+
+  .content-btn .btn-filtros, .content-btn .ClearButton, .content-btn .btn-dashboard {
+    margin-top: 1em;
+    margin-left: 0.5em;
+    background: transparent;
+    color: #ffff;
+    font-weight: 600;
+    width: 10em;
+    height: 3em;
+    border: 2px solid rgb(21, 88, 195);
+    border-radius: 5px;
+  }
+
+  .content-btn .ClearButton {
+    margin-left: 0.6em;
+  }
+  .ref{
+    margin-left: 20px;
+    display: block;
+    text-align: left;
+  }
+
+  .content .ol-popup .ol-popup-content, .ol-popup-content-filter{
+
+    width: 15em;
+    height: 300px;
+    background-color: #0000;
+    border-radius: 10px;
+    
+  }
+#popup-content{
+  background: #020202;
+  border: 2px solid rgb(21, 88, 195) ;
+  width: 35em;
+  height: 300px;
+  border-radius: 10px;
+  padding-top: 2em;
+}
+.ol-popup-content-filter p, .ol-popup-content-filter .dato-no-encontrado {
+  margin-top: -2em;
+  margin-left: 2em;
+  width: 200px;
+  background: transparent;
+  text-align: center;
+  border-radius: 5px;
+  display: none;
+}
+
+#dato-encontrado{
+  margin-left: 2em;
+  margin-top: 0.2em;
+  width: 200px;
+  font-weight: 500;
+  font-size: 15px;
+  color: #020202;
+  background: transparent;
+  text-align: center;
+  border-radius: 5px;
+}
+.ol-popup-content-filter .dato-no-encontrado{
+  color: #020202;
+  display: block;
+  font-size: 15px;
+  margin-left: 2em;
+  margin-top: 0.2em;
+  
+}
+  .ol-popup-closer {
+    text-decoration: none;
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 25px;
+    color: #ffff;
+    background: none;
+    border: none;
+
+  }
+
+  .ol-popup-closer:after {
+    content: "x";
+    
+  }
+
+  .minimizar{
+    align-items: center;
+    background: transparent;
+    border: none;
+    margin-left: 18em;
+  }
+  .data-p{
+  
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    margin-left: 1em;
+  }
+  .div-data{
+      margin-top: 1em;
+      margin-left: 1em
+  }
+  .data{
+      color: #ffff;
+      
+  }
+
+  .img-cartel{
+    width: 250px;
+    height: 120px;
+    margin-left: 8em;
+  }
+
+  .filter{
+    z-index: 1;
+    position: relative;
+    left: 20px;
+    top: 200px;
+  }
+
+  .filter h2{
+    color: #020202;
+    background-color: #0000;
+  }
+
+  .select-filter{
+    justify-content: space-between;
+    display: flex;
+    margin-top: 1em;
+    margin-left: 1em;
+    width: 14em;
+    height: 32px;
+    border-radius: 8px;
+    text-align: center;
+    background: #bb0e0e00;
+  }
+
+
+
+  .miButton{
+    background: #020202;
+    border-radius: 5px;
+    width: 6em;
+    color: beige;
+    border: 2px solid #1558c3;
+    margin: 1em 0em 0em 4.8em;
+  
+  }
+
+.prueba{
+  color: rgba(255, 255, 255, 0.6);
+    
+  color: rgba(255, 255, 255, 0.6);
+
+  color: #319FD3;
+
+}
+
+      

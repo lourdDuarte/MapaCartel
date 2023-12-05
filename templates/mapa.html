@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% block head_content %}
+
+<title>OpenLayers 3 example</title>
+
+{% endblock head_content %}
+   
+{% block container %}
+
+<section>
+    <div class="content-btn">
+      <a href='{% url "dashboard" %}'>
+        <button class="btn-dashboard" ><i class="fa-sharp fa-solid fa-gauge" style="color: #1558c3;"></i> Dashboard</button>
+      </a> 
+      
+      <button type="submit" class="ClearButton" id="buttonFilter"><i class="fa-solid fa-repeat" style="color: #1558c3;"></i> Reiniciar mapa  </button>
+      
+      <button class="btn-filtros" onclick="maximizar_filtros()"><i class="fa-solid fa-filter" style="color: #1558c3;"></i> Filtros </button>
+      
+      
+      <div  id="map" class="map">
+        
+        <div id="ol-popup-filter" class="ol-popup-filter">
+          
+          <div id="filter-content" class="ol-popup-content-filter">
+          <button class="minimizar" onclick="minimizar_filtros()" ><i class="fa-solid fa-window-minimize"></i></button>
+          <p id="dato-encontrado">Se encontraron datos <i class="fa-solid fa-check"></i></p> 
+          <h2 id="dato-no-encontrado" class="dato-no-encontrado">No hay filtros aplicados </h2> 
+          <form method="post">
+            {% csrf_token %}
+
+        
+    
+            <select class="select-filter" name="selectLocalidad" id="selectLocalidad">
+
+              <option value='0' selected>Localidad</option>
+              {% for l in localidad  %}
+              <option value="{{l.id}}">{{l.nombre}}</option>
+              {% endfor %}
+              
+            </select>
+            <select class="select-filter" name="selectProveedor" id="selectProveedor">
+
+              <option value='0' selected>Proveedor</option>
+              {% for p in proveedor  %}
+              <option value="{{p.id}}">{{p.nombre}}</option>
+              {% endfor %}
+              
+            </select>
+    
+           
+           
+            <button type="submit" class="miButton" >Filtrar</button>
+            
+            
+
+          </form>
+          
+              
+
+            
+            
+            
+            
+          </div>
+          
+        </div>
+      </div>
+      <div id="popup"  class="ol-popup">
+        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+        <div id="popup-content" class="ol-popup-content"></div>
+        </div>
+      </div>
+    </div>  
+  </section>
+ 
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+         
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+  <script>
+
+ 
+
+    var buttonFilter = document.getElementById('buttonFilter');
+    buttonFilter.addEventListener("click", function() {
+      
+      location.href="{% url 'mapa'  %}"
+      
+    });
+ 
+    coordenadas = [
+      {% for ubi in ubicaciones  %}
+            {
+                'id':{{ubi.id}},
+                'proveedor':'{{ubi.proveedor.id}}',
+                'latitud': {{ubi.latitud}},
+                'longitud': {{ubi.longitud}}
+                
+            },
+    
+      {% endfor %}
+        
+
+    ]
+
+    iconos = [
+      {% for icon in proveedor %}
+            {
+              'id':{{icon.id}},
+              'ruta':'{{icon.icono}}'
+            },
+
+      {% endfor%}
+    ]
+    
+   
+    datos_cartel = [
+        {% for ubi in ubicaciones  %}
+            {
+                'id':{{ubi.id}},
+                'nombre': '{{ubi.nombre}}',
+                'direccion':'{{ubi.direccion}}',
+                'localidad':'{{ubi.localidad}}',
+                'latitud': {{ubi.latitud}},
+                'longitud': {{ubi.longitud}},
+                'imagen':'{{ubi.imagen_cartel}}'
+            },
+    
+        {% endfor %}
+
+    ]
+
+    filtros_ubicacion = 
+    [
+      {% for filtro in data  %}
+        {
+          'id': {{filtro.id}},
+          'proveedor':'{{filtro.proveedor.id}}',
+          'longitud':{{filtro.longitud}}, 
+          'latitud':{{filtro.latitud}}
+        
+        },
+      
+      {% endfor %}
+    ]
+    console.log(filtros_ubicacion)
+    
+  </script>
+
+{% endblock container %}  

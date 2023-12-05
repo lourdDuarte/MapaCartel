@@ -1,0 +1,61 @@
+.pie-chart{
+    margin-left: 20em;
+
+}
+
+.separador{
+    margin-top: 5em;
+    padding-bottom: 10em;
+    
+}
+
+.separador h1{
+    text-align: center;
+    margin-top: 1em;
+    font-size: 23px;
+    margin-left: 1em;
+}
+
+.card-report{
+    width: 338px;
+    height: 200px;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    border: 2px solid rgb(202, 202, 202);
+    display:inline-table;
+    margin-left: 25px;
+    margin-top: 1.4em;
+    transition: all 0.6s ease;
+
+}
+
+.card-report:hover{
+    border: 2px solid rgb(85, 25, 197);
+}
+
+.title, .num{
+    color: rgb(85, 25, 197);
+    font-size: 20px;
+    text-align: center;
+    padding-top: 1em;
+    font-weight: bold;
+    
+}
+
+.num{
+    font-size: 30px;
+    color: black;
+}
+
+.descripcion{
+    font-size: 15px;
+    text-align: center;
+    color: rgb(143, 142, 142);
+}
+
+.title-interanual{
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    border-bottom: 2px solid #e7e3e3e0;
+    margin-top: 1em;
+}
