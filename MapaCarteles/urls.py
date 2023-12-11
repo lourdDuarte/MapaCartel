@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('mapa/', CartelTemplateView.as_view(template_name="mapa.html"), name = 'mapa'),
     path('dashboard/', CartelTemplateView.view_dashboard, name = 'dashboard'),
+    path('dashboard-filter/', CartelTemplateView.view_dashboard_filter, name = 'dashboard-filter'),
     path('formulario/', CartelTemplateView.add_new_cartel, name = 'formulario'),
     path('actualizar/<str:pk>/', CartelTemplateView.actualizar_cartel, name = 'actualizar'),
     path('eliminar/<str:pk>/', CartelTemplateView.eliminar_cartel, name = 'eliminar'),

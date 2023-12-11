@@ -131,17 +131,20 @@ class CartelTemplateView(TemplateView):
     def view_dashboard(request):
         proveedores = Proveedor.objects.all()
         localidades = Localidad.objects.all()
+        total_proveedores = Cartel.objects.values('localidad_id').annotate(total= Count('localidad_id'))
         context = {'proveedores':proveedores}
         context_localidad = {'localidades':localidades}
-
+       
+        context_total_prov = {'total_proveedores': total_proveedores}
+        context.update(context_total_prov)
 
         if request.method == 'POST':
          
           id_proveedor = request.POST['id_proveedor']
           if (id_proveedor != 0):
-            total_final = Cartel.objects.filter(proveedor_id = id_proveedor).values('localidad_id').annotate(total= Count('id'))
+            total_final = Cartel.objects.filter(proveedor_id = id_proveedor).values('localidad_id', 'proveedor_id').annotate(total= Count('id'))
             context_total = {'total_final':total_final}
-            print(context_total)
+            
             context.update(context_total)
           else:
               print("error")
@@ -153,6 +156,32 @@ class CartelTemplateView(TemplateView):
         
         return render(request,'dashboard.html', context)
    
+    def view_dashboard_filter(request):
+        proveedores = Proveedor.objects.all()
+        localidades = Localidad.objects.all()
+        
+        context = {'proveedores':proveedores}
+        context_localidad = {'localidades':localidades}
+       
+        
+        if request.method == 'POST':
+         
+          id_proveedor = request.POST['id_proveedor']
+          if (id_proveedor != 0):
+            total_final = Cartel.objects.filter(proveedor_id = id_proveedor).values('localidad_id', 'proveedor_id').annotate(total= Count('id'))
+            context_total = {'total_final':total_final}
+            
+            context.update(context_total)
+          else:
+              print("error")
+          
+        
+       
+        context.update(context_localidad)
+        
+        return render(request, 'dashboard_filtros.html', context)
+    
+
     def eliminar_cartel(request, pk):
         request = Cartel.objects.get(id=pk)
         request.delete()
