@@ -5,6 +5,14 @@
    
 }
 
+.main-class-listado{
+    height: 1080px;
+}
+
+nav{
+    margin-top: -5em;
+}
+
 .main-class{
     height: 1080px;
    
@@ -83,4 +91,5 @@
     margin-top: 2em;
     
 }
+
 

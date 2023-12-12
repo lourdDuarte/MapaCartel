@@ -7,6 +7,14 @@
 {% block container %}
 <main >
     <h1>CARTELES</h1>
+    <div class="div-button">
+        
+        <a href="{% url 'mapa'  %}" >
+            <button class="btn"><i class="animation"></i>Ver mapa <i class="fa-solid fa-map-location-dot"></i><i class="animation"></i>
+            </button>
+        </a>
+        
+    </div>
     
     <div class="content-prov-inicial" id="content-filter">
         <a href="{% url 'dashboard-filter' %}">
@@ -40,13 +48,7 @@
 
         
         
-        <div class="div-button">
-            <a href="{% url 'mapa'  %}" >
-                <button class="btn"><i class="animation"></i>Ver mapa <i class="fa-solid fa-map-location-dot"></i><i class="animation"></i>
-                </button>
-            </a>
-            
-        </div>
+        
        
         
         

@@ -11,6 +11,8 @@ class Cartel(models.Model):
     latitud = models.CharField(max_length=200, blank=False, null=False)
     longitud = models.CharField(max_length=200, blank=False, null=False)
     direccion = models.CharField(max_length=250, blank=False, null=False)
+    medidas = models.CharField(max_length=250, blank=False, null=False)
+    fecha_actualizacion = models.DateTimeField(auto_now=True)
     imagen_cartel = models.FileField(upload_to='carteles/')
 
     def __str__(self):

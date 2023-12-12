@@ -4,15 +4,13 @@ main, .content-prov-inicial{
 }
 
 main h1{
-  text-align: center;
+  text-align: left;
   color: rgb(248, 248, 248);
   margin-bottom: 3em;
+  margin-left: 2em;
   padding-top: 1em;
 }
-.btn-filtrar-prov{
-  margin-left: 10em;
-  margin-top: -15em;
-}
+
 .content-filter{
     background-color: black;
     width: 100;
@@ -36,7 +34,7 @@ main h1{
     transition: all 1s ease;
 }
 
-.content-filter .card:hover{
+.content-filter .card:hover, .content-prov-inicial .card:hover{
     width: 360px;
     height: 230px;
     border: 2px solid #ffff;
@@ -92,12 +90,22 @@ main h1{
 
 .form-filter{
   margin-bottom: 3em;
+  margin-top: -2em;
 }
 
 .form-filter select{
   border-radius: 5px;
   
   height: 45px;
+}
+
+.div-button{
+  margin-left: 42%;
+  
+  width: 390px;
+  position: absolute;
+  top: 1px;
+  left: 40em;
 }
 
 .div-button .btn {
@@ -125,6 +133,12 @@ main h1{
   .div-button .btn:hover {
     opacity: .9;
     color: #fff;
+  }
+
+.btn-ver-todo, .btn-filtrar-prov{
+  position: absolute;
+  left: 5em;
+  top: 6em;
   }
   
   .btn .animation {

@@ -9,7 +9,7 @@
 {% block container %}
 <main id="main" class="main main-class">
     <div class="pagetitle pegatitle-margin">
-        <h1>Cargar nueva obra</h1>
+        <h1>Cargar nuevo cartel</h1>
         <nav>
           <ol class="breadcrumb ol-margin">
             <li class="breadcrumb-item item-style"><a href="{% url 'listado'%}">Actualizar carteles</a></li>
@@ -18,7 +18,7 @@
            
           </ol>
         </nav>
-    </div><!-- End Page Title -->
+     </div><!-- End Page Title -->
     <section class="section">
         <div class="row">
           <div class="col-lg-6">
@@ -50,7 +50,12 @@
                         </div>
                       </div>
                       
-                     
+                      <div class="row mb-3 ">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Medidas del cartel</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" name="medidas">
+                        </div>
+                      </div>
                       
                       <div class="row mb-3 ">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Latitud</label>

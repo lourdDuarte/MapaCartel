@@ -140,3 +140,55 @@ function maximizar_filtros(){
 function minimizar_filtros(){
   popup_filter.style.display = 'none';
 }
+
+
+// FUNCION PARA MOVER CAJA DE FILTRO
+
+popup_filter.onmousedown = function(event) {
+  // Obtener el elemento sobre el cual se hizo clic
+  const clickedElement = event.target;
+
+  // Verificar si el clic proviene de los elementos internos (selects y botón)
+  if (
+    clickedElement.tagName === 'SELECT' ||
+    clickedElement.tagName === 'BUTTON'
+  ) {
+    // No iniciar el movimiento si se hizo clic en los elementos internos
+    return;
+  }
+ 
+ // (1) preparar para mover: hacerlo absoluto y ponerlo sobre todo con el z-index
+ popup_filter.style.position = 'absolute';
+ popup_filter.style.zIndex = 1000;
+
+ // quitar cualquier padre actual y moverlo directamente a body
+ // para posicionarlo relativo al body
+ document.body.append(popup_filter);
+
+
+ function moveAt(pageX, pageY) {
+   {
+     popup_filter.style.left = pageX - popup_filter.offsetWidth / 2 + 'px';
+     popup_filter.style.top = pageY - popup_filter.offsetHeight / 2 + 'px';
+   }
+ }
+
+ // mover la caja posicionada absolutamente bajo el puntero
+ moveAt(event.pageX, event.pageY);
+
+ function onMouseMove(event) {
+  
+     moveAt(event.pageX, event.pageY);
+   
+ }
+
+ // (2) mover caja con mousemove
+ document.addEventListener('mousemove', onMouseMove);
+
+ // (3) soltar caja, quitar cualquier manejador de eventos innecesario
+ popup_filter.onmouseup = function() {
+   document.removeEventListener('mousemove', onMouseMove);
+   popup_filter.onmouseup = null;
+ };
+
+};

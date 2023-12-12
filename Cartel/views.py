@@ -196,7 +196,7 @@ class CartelTemplateView(TemplateView):
             if user:
               
                 login(request, user)
-                return redirect('formulario')
+                return redirect('listado')
             else:
                
                 return render(request, 'login.html', {'error': 'Invalid username and password'})
