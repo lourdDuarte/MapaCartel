@@ -185,6 +185,7 @@ class CartelTemplateView(TemplateView):
     def eliminar_cartel(request, pk):
         request = Cartel.objects.get(id=pk)
         request.delete()
+        
         return redirect('listado')
     
     def login(request):

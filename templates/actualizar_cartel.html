@@ -54,6 +54,12 @@
                         
                     </div>
                     <div class="col-12 div-input">
+                      {{form.cartel.errors}}
+                       <label for="{{form.medidas.id_for_label}}" class="col-lg-3 control-label">Medidas</label>
+                      {{form.medidas}}
+                       
+                   </div>
+                    <div class="col-12 div-input">
                         {{form.cartel.errors}}
                          <label for="{{form.latitud.id_for_label}}" class="col-lg-3 control-label">Latitud</label>
                         {{form.latitud}}
@@ -67,11 +73,11 @@
                      </div>
                      <div class="col-12 div-input">
                         {{form.cartel.errors}}
-                         <label for="{{form.direccion.id_for_label}}" class="col-lg-3 control-label">Direccion</label>
+                         <label for="{{form.direccion.id_for_label}}" class="col-lg-3 control-label">Dirección</label>
                         {{form.direccion}}
                          
                      </div>
-                     <div class="col-12 div-input">
+                     <div class="col-12 div-input" style="display:none">
                       {{form.cartel.errors}}
                        <label for="{{form.proveedor.id_for_label}}" class="col-lg-3 control-label">Proveedor</label>
                       {{form.proveedor}}
@@ -85,7 +91,7 @@
                      </div>
                      <div class="col-12 div-input">
                         {{form.cartel.errors}}
-                         <label for="{{form.imagen_cartel.id_for_label}}" class="col-lg-3 control-label">Imagen</label>
+                         <label for="{{form.imagen_cartel.id_for_label}}" class="col-lg-3 control-label">Imagen del cartel</label>
                         {{form.imagen_cartel}}
                          
                      </div>
@@ -107,3 +113,16 @@
 
 
 {% endblock container %}
+
+
+
+
+
+
+
+
+
+
+
+
+{

@@ -10,6 +10,6 @@ class CartelForm(ModelForm):
         model = Cartel
         fields = '__all__'
         
-        required = ['usuario','domicilio','nombre', 'localidad', 'latitud', 'longitud', 'imagen_cartel', 'proveedor']
+        required = ['usuario','domicilio','nombre', 'localidad', 'latitud', 'longitud', 'imagen_cartel', 'proveedor', 'medidas']
         
         

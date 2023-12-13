@@ -6,7 +6,7 @@
 }
 
 .main-class-listado{
-    height: 1080px;
+    height: 2020px;
 }
 
 nav{
@@ -92,4 +92,11 @@ nav{
     
 }
 
-
+#botonpersonal{
+    font: caption;
+    -webkit-appearance: button;
+    background: black !important;
+    color: white;
+    border-color: black !important;
+    padding: 7px 10px;
+}

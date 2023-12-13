@@ -1,11 +1,13 @@
 .map {
-  height: 890px;
+  height: 850px;
   width: 99%;
   margin-left: 0.5em;
   margin-top: 1em;
   z-index: 1;
   border: 3px solid rgb(21, 88, 195);
+  overflow: hidden;
 }
+
 
 .ol-popup-filter{
     position: absolute;
@@ -102,7 +104,7 @@
   background: #020202;
   border: 2px solid rgb(21, 88, 195) ;
   width: 35em;
-  height: 300px;
+  height: 350px;
   border-radius: 10px;
   padding-top: 2em;
 }
@@ -126,6 +128,7 @@
   background: transparent;
   text-align: center;
   border-radius: 5px;
+  display: none;
 }
 .ol-popup-content-filter .dato-no-encontrado{
   color: #020202;
@@ -154,9 +157,16 @@
 
   .minimizar{
     align-items: center;
-    background: transparent;
+    background: #020202;
     border: none;
-    margin-left: 18em;
+    color: #ffffff;
+    margin-left: 16em;
+    border-radius: 5px;
+  }
+
+  .minimizar i{
+    color: #1558c3;
+    padding-bottom: 0.5em;
   }
   .data-p{
   
@@ -170,7 +180,7 @@
   }
   .data{
       color: #ffff;
-      
+      padding-left: 0.5em;
   }
 
   .img-cartel{
@@ -179,6 +189,14 @@
     margin-left: 8em;
   }
 
+  .img-cartel-mapa{
+    min-width: 360px;
+    height: 150px;
+    position: absolute;
+    top:12em;
+    left: 5em;
+    
+  }
   .filter{
     z-index: 1;
     position: relative;
@@ -224,4 +242,21 @@
 
 }
 
-      
+.content-btn h1, .content-btn p{
+  color:#ffff;
+  display:inline-flex;
+  font-size: 25px;
+  margin-left: 1em;
+}
+
+.content-btn p{
+  font-size: 15px;
+}
+
+.content-btn img{
+  width: 40px;
+  margin-top: -10px;
+  background: #ffffff;
+  border-radius: 10px;
+  margin-left: 8px;
+}

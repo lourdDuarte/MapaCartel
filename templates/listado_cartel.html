@@ -7,66 +7,99 @@
 {% endblock head_content %}
 
 {% block container %}
-<main id="main" class="main main-class-listado">
-    <div class="pagetitle pegatitle-margin">
-        <h1>Listado carteles</h1>
-        <nav>
-          <ol class="breadcrumb ol-margin">
-            <li class="breadcrumb-item item-style"><a href="{% url 'formulario'  %}">Nuevo cartel</a></li>
-            <li class="breadcrumb-item item-style"><a target="_blank" href="{% url 'mapa'  %}">Ver Mapa</a></li>
-            <li class="breadcrumb-item item-style"><a href="{% url 'logout'  %}">Salir</a></li>
-           
-          </ol>
-        </nav>
-    </div><!-- End Page Title -->
-    <section class="section">
-        <div class="row">
-            <div class="col-lg-12">
-        
-              <div class="card table-style">
-                <div class="card-body ">
-                 
-                 
-        
-                  <!-- Table with stripped rows -->
-                  <table class="table datatable">
-                    <thead>
-                      <tr>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Localidad</th>
-                        <th scope="col">Imagen</th>
-                        <th scope="col">Accion</th>
-                        
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {% for c  in carteles  %}
-                      
-                      
+<body>
+  <main id="main" class="main main-class-listado">
+      <div class="pagetitle pegatitle-margin">
+          <h1>Listado carteles</h1>
+          <nav>
+            <ol class="breadcrumb ol-margin">
+              <li class="breadcrumb-item item-style"><a href="{% url 'formulario'  %}">Nuevo cartel</a></li>
+              <li class="breadcrumb-item item-style"><a target="_blank" href="{% url 'mapa'  %}">Ver Mapa</a></li>
+              <li class="breadcrumb-item item-style"><a href="{% url 'logout'  %}">Salir</a></li>
+            
+            </ol>
+          </nav>
+      </div><!-- End Page Title -->
+      <section class="section">
+          <div class="row">
+              <div class="col-lg-12">
+          
+                <div class="card table-style">
+                  <div class="card-body ">
+                  
+                  
+          
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable">
+                      <thead>
                         <tr>
-                          <td>{{c.nombre}}</td>
-                          <td>{{c.localidad}}</td>
-                          <td><img class="img-cartel" src="/media/{{ c.imagen_cartel }}"></td>
-                          <td>
-                            <a href="{% url 'actualizar' c.id %}"><i class="fa-regular fa-pen-to-square" style="color: #1558c3; font-size:25px"></i></a>
-                            <a href="{% url 'eliminar' c.id %}"><i class="fa-solid fa-trash" style="color: #1558c3;font-size:25px"></i></a>
-                          </td>
+                          <th scope="col">Nombre</th>
+                          <th scope="col">Localidad</th>
+                          <th scope="col">Imagen</th>
+                          <th scope="col">Acción</th>
                           
                         </tr>
+                      </thead>
+                      <tbody>
+                        {% for c in carteles %}
+                        <tr>
+                          <td>{{ c.nombre }}</td>
+                          <td>{{ c.localidad }}</td>
+                          <td><img class="img-cartel" src="/media/{{ c.imagen_cartel }}"></td>
+                          <td>
+                            <a href="{% url 'actualizar' c.id %}">
+                              <i class="fa-regular fa-pen-to-square" style="color: #1558c3; font-size:25px"></i>
+                            </a>
+                            <button type="button" style="border: none; outline: none; background:#ffffff" data-toggle="modal" data-target="#exampleModalLong{{ c.id }}">
+                              <i class="fa-solid fa-trash" style="color: #1558c3;font-size:25px"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      
+                        <!-- Modal for each item -->
+                        <div class="modal fade" id="exampleModalLong{{ c.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Eliminar cartel</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                ¿Seguro que desea eliminar el cartel: {{ c.nombre }}?
+                                <img class="img-cartel" src="/media/{{ c.imagen_cartel }}"></td>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <a href="{% url 'eliminar' c.id %}">
+                                  <button type="button" class="btn btn-primary">Eliminar</button>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       {% endfor %}
-                    </tbody>
-                  </table>
-                  <!-- End Table with stripped rows -->
-        
+                      </tbody>
+                    </table>
+                    <!-- Button trigger modal -->
+                    
+                                    <!-- Modal -->
+                  
+                  </div>
                 </div>
+          
               </div>
-        
             </div>
-          </div>
-    </section>
+      </section>
 
 
-</main>
-
+  </main>
+</body>
+<script>
+  $('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+  })
+</script>
 
 {% endblock container %}

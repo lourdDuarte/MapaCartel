@@ -6,9 +6,9 @@
 {% endblock head_content %}
    
 {% block container %}
-
-<section>
-    <div class="content-btn">
+<body style="overflow-x: hidden; overflow-y: hidden;">
+  <section style="overflow-x: hidden; overflow-y: hidden;">
+    <div class="content-btn" style="overflow-x: hidden; overflow-y: hidden;">
       <a href='{% url "dashboard" %}'>
         <button class="btn-dashboard" ><i class="fa-sharp fa-solid fa-gauge" style="color: #1558c3;"></i> Dashboard</button>
       </a> 
@@ -16,49 +16,53 @@
       <button type="submit" class="ClearButton" id="buttonFilter"><i class="fa-solid fa-repeat" style="color: #1558c3;"></i> Reiniciar mapa  </button>
       
       <button class="btn-filtros" onclick="maximizar_filtros()"><i class="fa-solid fa-filter" style="color: #1558c3;"></i> Filtros </button>
-      
+      <h1>Referencias:</h1>
+      {% for prov in proveedor  %}
+      <p>{{ prov.nombre }}: <img  src="/media/{{ prov.icono }}" alt="Imagen"></p>
+      {% endfor %}
       
       <div  id="map" class="map">
         
         <div id="ol-popup-filter" class="ol-popup-filter">
           
           <div id="filter-content" class="ol-popup-content-filter">
-          <button class="minimizar" onclick="minimizar_filtros()" ><i class="fa-solid fa-window-minimize"></i></button>
-          <p id="dato-encontrado">Se encontraron datos <i class="fa-solid fa-check"></i></p> 
-          <h2 id="dato-no-encontrado" class="dato-no-encontrado">No hay filtros aplicados </h2> 
-          <form method="post">
-            {% csrf_token %}
-
-        
-    
-            <select class="select-filter" name="selectLocalidad" id="selectLocalidad">
-
-              <option value='0' selected>Localidad</option>
-              {% for l in localidad  %}
-              <option value="{{l.id}}">{{l.nombre}}</option>
-              {% endfor %}
-              
-            </select>
-            <select class="select-filter" name="selectProveedor" id="selectProveedor">
-
-              <option value='0' selected>Proveedor</option>
-              {% for p in proveedor  %}
-              <option value="{{p.id}}">{{p.nombre}}</option>
-              {% endfor %}
-              
-            </select>
-    
+            <button type="submit" onclick="minimizar_filtros()"  class="minimizar" >Cerrar</button>
            
-           
-            <button type="submit" class="miButton" >Filtrar</button>
-            
-            
+            <p id="dato-encontrado">Se encontraron datos <i class="fa-solid fa-check"></i></p> 
+            <h2 id="dato-no-encontrado" class="dato-no-encontrado">No hay filtros aplicados </h2> 
+            <form method="post">
+              {% csrf_token %}
 
-          </form>
           
+      
+              <select class="select-filter" name="selectLocalidad" id="selectLocalidad">
+
+                <option value='0' selected>Localidad</option>
+                {% for l in localidad  %}
+                <option value="{{l.id}}">{{l.nombre}}</option>
+                {% endfor %}
+                
+              </select>
+              <select class="select-filter" name="selectProveedor" id="selectProveedor">
+
+                <option value='0' selected>Proveedor</option>
+                {% for p in proveedor  %}
+                <option value="{{p.id}}">{{p.nombre}}</option>
+                {% endfor %}
+                
+              </select>
+      
+            
+            
+              <button type="submit" class="miButton" >Filtrar</button>
+              
               
 
+            </form>
             
+                
+
+              
             
             
             
@@ -128,8 +132,10 @@
             {
                 'id':{{ubi.id}},
                 'nombre': '{{ubi.nombre}}',
+                'medidas':'{{ubi.medidas}}',
                 'direccion':'{{ubi.direccion}}',
                 'localidad':'{{ubi.localidad}}',
+                'ultima_modificacion': '{{ubi.fecha_actualizacion}}',
                 'latitud': {{ubi.latitud}},
                 'longitud': {{ubi.longitud}},
                 'imagen':'{{ubi.imagen_cartel}}'
@@ -155,5 +161,5 @@
     console.log(filtros_ubicacion)
     
   </script>
-
+</body>
 {% endblock container %}  
