@@ -23,6 +23,7 @@ from Cartel.views import CartelTemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('mapa/', CartelTemplateView.as_view(template_name="mapa.html"), name = 'mapa'),
+    # path('mapa/<str:pk>/', CartelTemplateView.view_mapa_filtro, name = 'mapa'),
     path('dashboard/', CartelTemplateView.view_dashboard, name = 'dashboard'),
     path('dashboard-filter/', CartelTemplateView.view_dashboard_filter, name = 'dashboard-filter'),
     path('formulario/', CartelTemplateView.add_new_cartel, name = 'formulario'),

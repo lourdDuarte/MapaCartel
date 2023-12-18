@@ -10,13 +10,13 @@
   <section style="overflow-x: hidden; overflow-y: hidden;">
     <div class="content-btn" style="overflow-x: hidden; overflow-y: hidden;">
       <a href='{% url "dashboard" %}'>
-        <button class="btn-dashboard" ><i class="fa-sharp fa-solid fa-gauge" style="color: #1558c3;"></i> Dashboard</button>
+        <button class="btn-dashboard" ><i class="fa-sharp fa-solid fa-gauge" style="color: #1558c3;"></i> Resumen</button>
       </a> 
       
       <button type="submit" class="ClearButton" id="buttonFilter"><i class="fa-solid fa-repeat" style="color: #1558c3;"></i> Reiniciar mapa  </button>
       
       <button class="btn-filtros" onclick="maximizar_filtros()"><i class="fa-solid fa-filter" style="color: #1558c3;"></i> Filtros </button>
-      <h1>Referencias:</h1>
+      <h1>Proveedores:</h1>
       {% for prov in proveedor  %}
       <p>{{ prov.nombre }}: <img  src="/media/{{ prov.icono }}" alt="Imagen"></p>
       {% endfor %}

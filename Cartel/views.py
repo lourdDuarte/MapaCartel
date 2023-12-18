@@ -69,11 +69,14 @@ class CartelTemplateView(TemplateView):
         form = CartelForm(instance=cartel)
         if request.method == 'POST':
              form = CartelForm(request.POST, request.FILES,instance=cartel)
-             form.save()
-             return redirect('listado')
+             if form.is_valid():
+                form.save()
+                return redirect('listado')
+             else:
+                 return render (request,'actualizar_cartel.html',{'form':form})
         
-        context = {'form':form}
-        return render (request,'actualizar_cartel.html',context)
+        
+        return render (request,'actualizar_cartel.html',{'form':form})
 
     
     def solicitud_usuario(request):
@@ -127,6 +130,12 @@ class CartelTemplateView(TemplateView):
         
         
         return render(request, self.template_name, context)
+    
+    # def view_mapa_filtro(request):
+    #     proveedores = Proveedor.objects.all()
+    #     context = {'provedor':proveedores}
+        
+    #     return render (request, 'mapa.html',context)
     
     def view_dashboard(request):
         proveedores = Proveedor.objects.all()

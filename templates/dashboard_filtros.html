@@ -40,6 +40,7 @@
                 {% for localidad in localidades  %}
                 
                     {% for total in total_final  %}
+                    
                         {% if total.localidad_id == localidad.id  %}
                             <div class="card">
                             <h1 class="title-card"> Cantidad en: {{localidad.nombre}}</h1>
