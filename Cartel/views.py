@@ -41,8 +41,8 @@ class CartelTemplateView(TemplateView):
             form = CartelForm(request.POST, request.FILES)
             print(form)
             if form.is_valid():
-                
-                form.save()
+                print(form)
+                #form.save()
                 messages.success(request, '¡Cartel cargada con exito!')  # Define el mensaje de éxito
                 return redirect('formulario')
             else:

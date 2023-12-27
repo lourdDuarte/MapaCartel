@@ -10,7 +10,7 @@ class CartelForm(ModelForm):
         model = Cartel
         fields = '__all__'
         
-        required = ['usuario','domicilio','nombre', 'localidad', 'latitud', 'longitud', 'imagen_cartel', 'proveedor', 'medidas']
+        required = ['usuario','domicilio','nombre', 'localidad', 'latitud', 'longitud', 'imagen_cartel', 'proveedor', 'medidas', 'altura', 'largo', 'metros_cuadrados']
         
         
     def clean_latitud(self):
@@ -32,3 +32,7 @@ class CartelForm(ModelForm):
             raise forms.ValidationError("La longitud no debe contener comas.")
         
         return longitud
+    
+    
+
+    

@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Cartel',
     'Localidad',
-    'proveedor'
+    'proveedor',
+    'precioProveedor'
 ]
 
 MIDDLEWARE = [

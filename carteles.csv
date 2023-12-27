@@ -1,0 +1,77 @@
+﻿id,usuario_id,proveedor_id,nombre,localidad_id,latitud,longitud,direccion,imagen_cartel,fecha_actualizacion,altura,largo,metros_cuadrados,metros_cuadrados_precio
+6,2,1,Plan 100 obras,1,-26.126115,-58.2131257,Camping IASEP,carteles/COLMAN_2.png,2023-12-18 23:19:42.645175,,,,
+7,2,1,Cartel YPF soberania,1,-26.1979858,-58.2124551,AV. GUTNISKY Y AVELLANEDA,carteles/colman_3.png,2023-12-13 15:10:27.877602,,,,
+8,2,1,Nuevas viviendas,1,-26.1982657,-58.2133942,CRUZ DEL NORTE,carteles/colman_4.png,2023-12-13 15:10:46.667809,,,,
+9,2,1,Nuevos acuaductos,1,-26.1883036,-58.1840453,AV GUTNISKY Y PANTALE������N - FRENTE A LA YPF,carteles/colman_5.png,2023-12-13 15:11:56.628863
+10,2,1,Felices fiestas,1,-26.1217978,-58.2189058,CAMPING POLICIAL RN11,carteles/colman_6.png,2023-12-13 15:12:34.149985,,,,
+11,2,1,centros desarrollo infantil,1,-26.1860923,-58.2062883,AV. ALICIA MOREAU DE JUSTO Y AV. N. KIRCHNER,carteles/colman_7.png,2023-12-13 15:13:18.829245,,,,
+12,2,1,Fortmosa hermosa,1,-26.1818741,-58.1641019,AV. 25 DE MAYO Y SAN MART������N-HTL TURISMO,carteles/colman_8.png,2023-12-13 15:13:51.017058
+13,2,1,sistemas cloacales,1,-26.1604221,-58.1834721,AV. J. D. PER������N Y SANTOS MARIGHETTI,carteles/colman_9.png,2023-12-13 15:14:12.531438
+14,2,1,Viviendas urbanas,1,-26.1862664,-58.2062464,AVDA PUEYRRED������N Y N. KIRCHNER,carteles/colman_10.png,2023-12-13 15:15:17.268336
+15,2,1,Vuelta Formosa,1,-26.1779207,-58.1770812,Canal 3,carteles/colman_11.png,2023-12-13 15:18:53.248229,,,,
+16,2,1,Formosa crece,1,-26.1974152,-58.2127418,Cruz del norte,carteles/colman_12.png,2023-12-13 15:19:54.448811,,,,
+17,2,1,Formosa Hermosa,1,-26.187339,-58.2101359,LA PAMPA Y AV. N. KIRCHNER,carteles/colman_13.png,2023-12-13 15:20:25.728758,,,,
+18,2,1,vuelta a formosa,1,-26.1903054,-58.171759,SALTA Y FONTANA-ESTADIO CENTENARIO,carteles/colman_14.png,2023-12-13 15:20:45.598945,,,,
+19,2,1,Formosa da gusto,1,-26.1802281,-58.1954846,ESC. 496 PARQUE URBANO,carteles/colman_15.png,2023-12-13 15:21:31.119752,,,,
+20,2,1,Formosa hermosa,1,26.1791795,-58.1703295,DE������N FUNES Y MAIP������,carteles/colman_16.png,2023-12-13 15:23:33.92
+21,2,1,Todos unidos,1,-26.1900466,-58.1597957,EROSP,carteles/tic_IijqSv9.jpg,2023-12-13 15:23:51.328843,,,,
+22,2,1,Forrmosa crece,1,-26.183883,-58.1734744,FONTANA Y ESPA������A (ESC. 58),carteles/COLMAN_17.png,2023-12-13 15:24:11.044052
+23,2,1,Pantalla,1,-26.1846507,-58.1719201,PANTALLA EVA PER������N Y 25 DE MAYO,carteles/colman_18.png,2023-12-13 15:24:25.712800
+24,2,1,Pantalla,1,-26.1837945,-58.1735092,PANTALLA FONTANA Y ESPA������A,carteles/colman_19.png,2023-12-13 15:24:33.878959
+25,2,1,La virginia,1,-26.1102939,-58.2343381,Remanso de Paz,carteles/colman_20.png,2023-12-13 15:27:10.059393,,,,
+26,2,1,Nuevos acuaductos,1,-26.1565421,-58.1853088,Av J.D.Per������n (Acceso a Virgen,carteles/colman_21.png,2023-12-13 15:27:37.779490
+27,2,1,Sistema redes cloacales,1,-26.1893091,-58.215783,Gendarmer������a Nacional y Kirchner,carteles/colman_22.png,2023-12-13 15:28:15.581392
+"28,2,1,Cuadras de asfalto,1,-26.1900438,-58.2150226,""Gendarmer������a Nacional y Carlos Pasarelli, Bo In"",carteles/colman_23.png,2023-12-13 15:28:41.959302,,,,"
+29,2,1,Formosa crece,1,-26.1971023,-58.2131679,Gendarmer������a Nacional y Saavedra,carteles/colman_24.png,2023-12-13 15:29:06.119644
+30,2,1,Obra financiada,1,-26.1790174,-58.2095249,Gendarmer������a Nacional y Av. Italia,carteles/colman_25.png,2023-12-13 15:29:25.129167
+31,2,1,Formosa crece,1,-26.2126975,-58.2317688,Aeropuerto El Puc������,carteles/colman_27.png,2023-12-13 15:29:55.099619
+32,2,1,Todos unidos,1,-26.1937472,-58.1710685,Av Napole������n Uriburu y Av. 9 de Julio,carteles/colman_28.png,2023-12-13 15:30:13.442675
+33,2,1,Obra financiada por la provincia,1,-26.1788316,-58.2092841,Av. Gendarmeria Nacional y Alicia M. de Justo,carteles/colman_29.png,2023-12-13 15:30:32.969415,,,,
+34,3,2,Ba������ado la estrella,1,-26.2137967,-58.2313795,AEROPUERTO,carteles/giglio_1.png,,
+35,3,2,Nuevos centros infantiles,1,-26.186066,-58.2061831,ALICIA MOREAU DE JUSTO Y KIRCHNER,carteles/giglio_2.png,,,,,,
+36,3,2,Formosa hermosa,1,-26.1317533,-58.1612358,ANTENOR GAUNA,carteles/giglio_3.png,,,,,,
+37,3,2,Sistema cloacas,1,-26.1603298,-58.1835128,AV. JUAN D. PER������N Y MARIGHETT,carteles/giglio_4.png,,
+38,3,2,nuevas viviendas urbanas,1,-26.1326922,-58.1789676,BARRIO JUAN DOMINGO PER������N,carteles/giglio_5.png,,
+39,3,2,Formosa Hermosa,1,-26.1771508,-58.2093333,CIRCUNVALACI������N ��������� ESTACI������N TRANSFORMADORA,carteles/gigl
+40,3,2,Uso racional y responsable,1,-26.1880561,-58.1836323,ESCUELA 124,carteles/giglio_7.png,,,,,,
+41,3,2,Formosa crece,1,-26.1991768,-58.2172783,ESCUELA 17 ��������� AV. ILLIA AL 5300,carteles/giglio_8.png
+42,3,2,Todos,1,-26.1808475,-58.1973764,HOSPITAL EVITA,carteles/giglio_9.png,,,,,,
+43,3,2,Obra financiada,1,-26.1802213,-58.1977562,HOSPITAL ODONTOL������GICO,carteles/giglio_10.png,,
+44,3,2,Nuevas viviendas urbanas,1,-26.1982657,-58.2133942,LA CRUZ,carteles/giglio_11.png,,,,,,
+45,3,2,Formosa crece,1,-26.1751839,-58.2324203,LOTE 111 - ACCESO,carteles/giglio_12.png,,,,,,
+46,3,2,Nuevas viviendas urbanas,1,26.1862502,-58.2061459,PUEYRREDON Y KIRCHNER,carteles/giglio_13.png,,,,,,
+47,3,2,Nuevos centos infantiles,1,-26.1937878,-58.2150406,MAIP������ Y CIRCUNVALACI������N,carteles/giglio_14.p
+"48,3,2,Formosa crece,1,-26.1986263,-58.2446993,""NUEVA FORMOSA ��������� PLAZA, POSTES DE "",carteles/giglio_15.png,,,,,,"
+49,3,2,Formosa hermosa,1,-26.1846652,-58.176014,PUNTO NORTE,carteles/giglio_16.png,,,,,,
+50,3,2,Aqui tambien formosa crece,1,-26.1946924,-58.1745207,PISCINA OLIMPICA ��������� NAPOLE������N URIBURU Y C������RDOBA,carteles/gigli
+51,3,2,Cuadras nuevas de asfalto,1,-26.1900438,-58.2150226,PUENTE ELEVADO ��������� COMPLEJO LAS AM������RICAS,carteles/giglio_18
+52,3,2,Nuevos acuaductos,1,-26.1868401,-58.1646195,REFSA ��������� RIVADAVIA Y FOTHERINGHAM,carteles/giglio_19.png
+53,3,2,Nuevas viviendas,1,-26.2123957,-58.2315656,ROTONDA AEROPUERTO,carteles/giglio_20.png,,,,,,
+54,3,2,Acuaductos,1,-26.1567083,-58.1857109,ROTONDA DE LA VIRGEN,carteles/giglio_21.png,,,,,,
+55,3,2,Fiesta nacional de la corvina,1,-26.1131322,-58.2301172,RUTA 11 CRUCE CON RUTA 81,carteles/giglio_22.png,,,,,,
+57,4,3,Cuidemos a nuestros mayores,1,-26.1706708,-58.1891708,B������ SAN FRANCISCO - AV. ITALIA Y PEDRO BONACCIO,carteles/solis_2.png,2023-12-13 14:23:32.733506
+58,4,3,Facultad,1,-26.1929475,-58.1987014,ACCESO FRENTE A LA UNIVERSIDAD,carteles/solis_3.png,,,,,,
+59,4,3,Vota por ba������ado la estrella,1,-26.1805525,-58.163325,COSTANERA-ACCESO AL CLUB N������UTICO,carteles/solis_4.p
+60,4,3,Plan 100 obras para la provincia,1,-26.1865707,-58.175233,PLAZA SAN MART������N-SARMIENTO Y JOSE M.URIBURU,carteles/solis_5.png,,
+61,4,3,100 obras provincia de formosa,1,-26.1727699,-58.1795254,PLAZA TEM������TICA - 2 CARTELES - AV JJUAN  D. PER������N y MONSE������OR SCOZZINA,carteles/solis
+62,4,3,Fiesta nacional de la corvina,1,-26.1855494,-58.1756268,TOTEMS 25 DE MAYO - 22 LONAS - 11 T������TEMS DESDE SARMIENTO HASTA RIVADAVIA,carteles/solis_7.png,,
+63,4,3,En formosa no se rinde nadie,1,-26.1986263,-58.2446993,B������ NUEVA FORMOSA - PLAZA N������STOR KIRCHNER,carteles/solis_8.p
+64,4,3,Felices fiestas,1,-26.1519524,-58.1618926,B������ REP������BLICA ARGENTINA - SOMACAL Y AV. MARADONA,carteles/solis_9.p
+65,4,3,Todos unidos,1,-26.1937472,-58.1710685,LAGUNA OCA - AV 9 DE JULIO y AV NAPOLE������N URIBURU,carteles/solis_10.png,,
+66,4,3,Consejos covid,7,-25.320236,-57.733147,AV SAN MARTIN Y LIBERTAD,carteles/solis_11.png,,,,,,
+67,4,3,Fiesta nacional de la corvina,7,-25.321015,-57.733244,SOBRE RUTA N������ 11,carteles/solis_12.png,,
+68,4,3,107,8,-26.400764,-58.346042,Me lo ocuparon ��������� GILDO EVER,carteles/solis_13.png
+69,4,3,Gracias por la visita,8,-26.404017,-58.343055,Lo colocamos nosotros ��������� FSA HERMOSA,carteles/solis_14.png
+70,4,3,Soberania energetica,8,-26.482359,-58.308957,Me lo ocuparon ��������� SOBERANIA ENERGETICA,carteles/solis_15.png
+71,4,3,Ocupado,8,-26.488194,-58.311835,Me lo ocuparon ��������� GILDO-CANDIDATOS NAC,carteles/solis_16.png
+72,4,3,Gildo conduccion,8,-26.4773107,-58.3068788,Me lo ocuparon ��������� FSA HERMOSA,carteles/solis_17.png
+73,4,3,Gildo conduccion,9,-25.136853,-58.243328,RUTA N������ 86 Y 25 DE MAYO,carteles/solis_18.png,,
+74,4,3,Gildo y cristina,9,-25.135697,-58.245626,FRENTE AL PREDIO ��������� AV 25 DE MAYO Y ALFONSO,carteles/solis_20.png
+75,4,3,Sin imagen,10,-25.062664,-58.378640,ENTRADA VIEJA A BUENA VISTA,carteles/solis_21.png,,,,,,
+76,4,3,Obra en construccion,6,-25.366711,-58.280469,SOBRE RUTA N������ 2 ��������� 2 CARTELES,carteles/solis_22
+77,4,3,Gildo conduccion,6,-25.360995,-58.280004,Lo colocamos nosotros ��������� RIACHO PRODUCE,carteles/solis_23.png
+78,4,3,Gildo conduccion,11,-25.880892,-58.086285,Me lo ocuparon ��������� FSA HERMOSA,carteles/solis_24.png
+79,4,3,Uso responsable del agua,11,-25.880892,-58.086285,Me lo ocuparon ��������� GILDO FSA CRECE,carteles/solis_25.png
+80,4,3,Sin imagen,12,-24.967357,-58.545502,Hay que arreglar,carteles/solis_26.png,,,,,,
+81,4,3,Gildo conduccion,13,-24.942744,-59.027697,Me lo ocuparon ��������� GILDO-CANDIDATOS NAC,carteles/solis_27.png
+82,4,3,Candidatos,14,-25.224656,-58.115700,Me lo ocuparon ��������� GILDO-CANDIDATOS NAC,carteles/solis_28.png
