@@ -10,6 +10,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.views.generic import CreateView, TemplateView
 import yagmail
 from django.db.models import Count
+from precioProveedor.models import PrecioProveedor
 
 
 # Create your views here.
@@ -42,7 +43,7 @@ class CartelTemplateView(TemplateView):
             print(form)
             if form.is_valid():
                 print(form)
-                #form.save()
+                form.save()
                 messages.success(request, '¡Cartel cargada con exito!')  # Define el mensaje de éxito
                 return redirect('formulario')
             else:
@@ -60,24 +61,45 @@ class CartelTemplateView(TemplateView):
     def listado_cartel(request):
         user = request.user.id
         cartel = Cartel.objects.filter(usuario=request.user.id)
-        context = {'carteles':cartel}
-        
+        carteles = Cartel.objects.all()
+        context = {'cartel':cartel}
+        context_carteles = {'carteles':carteles}
+        context.update(context_carteles)
         return render(request,'listado_cartel.html', context)
     
     def actualizar_cartel(request,pk):
         cartel = Cartel.objects.get(id=pk)
+        precios = PrecioProveedor.objects.all()
+        context = {'precios': precios}
+        context_cartrel = {'cartel':cartel}
+
+        precio_metros_actual = cartel.metros_cuadrados_precio
+
         form = CartelForm(instance=cartel)
         if request.method == 'POST':
+             if request.POST['precio']:
+               if request.POST['precio'] == '0':
+                   total = 0
+               else:
+                precio = request.POST['precio']
+                metros = request.POST['metros_cuadrados']
+                total = int(metros)*int(precio)
+            
+                 
+               
              form = CartelForm(request.POST, request.FILES,instance=cartel)
              if form.is_valid():
+                if total > 0:
+                    
+                    cartel.metros_cuadrados_precio = total
+                else:
+                    cartel.metros_cuadrados_precio = precio_metros_actual
                 form.save()
                 return redirect('listado')
              else:
                  return render (request,'actualizar_cartel.html',{'form':form})
-        
-        
-        return render (request,'actualizar_cartel.html',{'form':form})
-
+        context.update(context_cartrel)
+        return render (request,'actualizar_cartel.html',{'form':form, **context})
     
     def solicitud_usuario(request):
         destinario = 'lourdes123duarte@gmail.com'

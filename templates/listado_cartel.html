@@ -36,50 +36,106 @@
                           <th scope="col">Nombre</th>
                           <th scope="col">Localidad</th>
                           <th scope="col">Imagen</th>
+                          {% if request.user.is_superuser %}
+                          <th scope="col">Proveedor</th>
+                          <th scope="col">Precio por m²2</th>
+                          {% endif %}
                           <th scope="col">Acción</th>
                           
                         </tr>
                       </thead>
                       <tbody>
-                        {% for c in carteles %}
-                        <tr>
-                          <td>{{ c.nombre }}</td>
-                          <td>{{ c.localidad }}</td>
-                          <td><img class="img-cartel" src="/media/{{ c.imagen_cartel }}"></td>
-                          <td>
-                            <a href="{% url 'actualizar' c.id %}">
-                              <i class="fa-regular fa-pen-to-square" style="color: #1558c3; font-size:25px"></i>
-                            </a>
-                            <button type="button" style="border: none; outline: none; background:#ffffff" data-toggle="modal" data-target="#exampleModalLong{{ c.id }}">
-                              <i class="fa-solid fa-trash" style="color: #1558c3;font-size:25px"></i>
-                            </button>
-                          </td>
-                        </tr>
-                      
-                        <!-- Modal for each item -->
-                        <div class="modal fade" id="exampleModalLong{{ c.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                          <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Eliminar cartel</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-body">
-                                ¿Seguro que desea eliminar el cartel: {{ c.nombre }}?
-                                <img class="img-cartel" src="/media/{{ c.imagen_cartel }}"></td>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                <a href="{% url 'eliminar' c.id %}">
-                                  <button type="button" class="btn btn-primary">Eliminar</button>
-                                </a>
+                        {% if not request.user.is_superuser %}
+                          {% for c in cartel %}
+                          <tr>
+                            <td>{{ c.nombre }}</td>
+                            <td>{{ c.localidad }}</td>
+                            <td><img class="img-cartel" src="/media/{{ c.imagen_cartel }}"></td>
+                            <td>
+                              <a href="{% url 'actualizar' c.id %}">
+                                <i class="fa-regular fa-pen-to-square" style="color: #1558c3; font-size:25px"></i>
+                              </a>
+                              <button type="button" style="border: none; outline: none; background:#ffffff" data-toggle="modal" data-target="#exampleModalLong{{ c.id }}">
+                                <i class="fa-solid fa-trash" style="color: #1558c3;font-size:25px"></i>
+                              </button>
+                            </td>
+                          </tr>
+                        
+                          <!-- Modal for each item -->
+                          <div class="modal fade" id="exampleModalLong{{ c.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLongTitle">Eliminar cartel</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  ¿Seguro que desea eliminar el cartel: {{ c.nombre }}?
+                                  <img class="img-cartel" src="/media/{{ c.imagen_cartel }}"></td>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                  <a href="{% url 'eliminar' c.id %}">
+                                    <button type="button" class="btn btn-primary">Eliminar</button>
+                                  </a>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      {% endfor %}
+                          {% endfor %}
+                        {%endif%}
+                        {% if request.user.is_superuser %}
+                        {% for c in carteles %}
+                          <tr>
+                            <td>{{ c.nombre }}</td>
+                            <td>{{ c.localidad }}</td>
+                            <td><img class="img-cartel" src="/media/{{ c.imagen_cartel }}"></td>
+                            <td>{{ c.proveedor }}</td>
+                            {% if c.metros_cuadrados_precio == None %}
+                            <td><p class="btn btn-danger">Sin actualizar</p></td>
+                            {% endif  %}
+                            {% if c.metros_cuadrados_precio != None %}
+                            <td><p class="btn btn-success">{{c.metros_cuadrados_precio}}</p></td>
+                            {% endif %}
+                            <td>
+                              <a href="{% url 'actualizar' c.id %}">
+                                <i class="fa-regular fa-pen-to-square" style="color: #1558c3; font-size:25px"></i>
+                              </a>
+                              <button type="button" style="border: none; outline: none; background:#ffffff" data-toggle="modal" data-target="#exampleModalLong{{ c.id }}">
+                                <i class="fa-solid fa-trash" style="color: #1558c3;font-size:25px"></i>
+                              </button>
+                            </td>
+                          </tr>
+                        
+                          <!-- Modal for each item -->
+                          <div class="modal fade" id="exampleModalLong{{ c.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLongTitle">Eliminar cartel</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  ¿Seguro que desea eliminar el cartel: {{ c.nombre }}?
+                                  <img class="img-cartel" src="/media/{{ c.imagen_cartel }}"></td>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                  <a href="{% url 'eliminar' c.id %}">
+                                    <button type="button" class="btn btn-primary">Eliminar</button>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        {% endfor %}
+                        
+                        {% endif %}
+                        
                       </tbody>
                     </table>
                     <!-- Button trigger modal -->

@@ -49,16 +49,49 @@
                     </div>
                     <div class="col-12 div-input">
                        {{form.nombre.errors}}
-                        <label for="{{form.nombre.id_for_label}}" class="col-lg-3 control-label">Nombre de la obra </label>
+                        <label for="{{form.nombre.id_for_label}}" class="col-lg-3 control-label">Nombre del cartel </label>
                        {{form.nombre}}
                         
                     </div>
                     <div class="col-12 div-input">
-                      {{form.medidas.errors}}
-                       <label for="{{form.medidas.id_for_label}}" class="col-lg-3 control-label">Medidas</label>
-                      {{form.medidas}}
+                      {{form.metros_cuadrados.errors}}
+                       <label for="{{form.metros_cuadrados.id_for_label}}" class="col-lg-3 control-label">M²2</label>
+                      {{form.metros_cuadrados}}
+                       
+                    </div>
+                    {% if request.user.is_superuser %}
+                    <div class="row mb-4 mt-4 ">
+                      <label for="inputEmail3" class="col-sm-2 col-form-label">Precios($)</label>
+                      <div class="col-sm-4">
+                          <select class="form-select" style="margin-left:3.8em;" name="precio" aria-label="State">
+                            {% for precio in precios  %}
+                                {% if precio.proveedor ==  cartel.proveedor%}
+                                <option value="0" selected>Proveedor: {{cartel.proveedor}}</option>
+                              
+                                <option value="{{precio.precio}}">{{precio.precio}} - {{precio.descripcion}}</option>
+                                
+                                {% endif %}
+                              
+                              {% endfor %}
+                              
+                             
+                            </select>
+                      </div>
+                    </div>
+                    
+                    {% endif %}
+                    <div class="col-12 div-input">
+                      {{form.altura.errors}}
+                       <label for="{{form.altura.id_for_label}}" class="col-lg-3 control-label">Altura</label>
+                      {{form.altura}}
                        
                    </div>
+                   <div class="col-12 div-input">
+                    {{form.largo.errors}}
+                     <label for="{{form.largo.id_for_label}}" class="col-lg-3 control-label">Largo</label>
+                    {{form.largo}}
+                     
+                    </div>
                     <div class="col-12 div-input">
                         {{form.latitud.errors}}
                          <label for="{{form.latitud.id_for_label}}" class="col-lg-3 control-label">Latitud</label>
@@ -82,19 +115,23 @@
                        <label for="{{form.proveedor.id_for_label}}" class="col-lg-3 control-label">Proveedor</label>
                       {{form.proveedor}}
                        
+                    </div>
+                    <div class="col-12 div-input">
+                      {{form.imagen_cartel.errors}}
+                       <label for="{{form.imagen_cartel.id_for_label}}" class="col-lg-3 control-label">Imagen del cartel</label>
+                      {{form.imagen_cartel}}
+                       
                    </div>
-                     <div class="col-12 div-input">
+                    <div class="col-12 div-input">
                         {{form.localidad.errors}}
                          <label for="{{form.localidad.id_for_label}}" class="col-lg-3 control-label">Localidad</label>
                         {{form.localidad}}
                          
-                     </div>
-                     <div class="col-12 div-input">
-                        {{form.imagen_cartel.errors}}
-                         <label for="{{form.imagen_cartel.id_for_label}}" class="col-lg-3 control-label">Imagen del cartel</label>
-                        {{form.imagen_cartel}}
-                         
-                     </div>
+                    </div>
+                    </div>
+                    
+                    
+                    
                     
                   
                   <div class="text-center">
