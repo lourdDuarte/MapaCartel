@@ -55,8 +55,8 @@
                     </div>
                     <div class="col-12 div-input">
                       {{form.metros_cuadrados.errors}}
-                       <label for="{{form.metros_cuadrados.id_for_label}}" class="col-lg-3 control-label">M²2</label>
-                      {{form.metros_cuadrados}}
+                       <label for="{{form.metros_cuadrados.id_for_label}}"  class="col-lg-3 control-label">M²2</label>
+                      <span>{{form.metros_cuadrados}}<span>
                        
                     </div>
                     {% if request.user.is_superuser %}

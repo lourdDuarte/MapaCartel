@@ -16,6 +16,7 @@
       <button type="submit" class="ClearButton" id="buttonFilter"><i class="fa-solid fa-repeat" style="color: #1558c3;"></i> Reiniciar mapa  </button>
       
       <button class="btn-filtros" onclick="maximizar_filtros()"><i class="fa-solid fa-filter" style="color: #1558c3;"></i> Filtros </button>
+      <button class="btn-filtros" onclick="descargar_datos()"><i class="fa-solid fa-filter" style="color: #1558c3;"></i> Excel</button>
       <h1>Proveedores:</h1>
       {% for prov in proveedor  %}
       <p>{{ prov.nombre }}: <img  src="/media/{{ prov.icono }}" alt="Imagen"></p>
@@ -96,7 +97,7 @@
 
     var buttonFilter = document.getElementById('buttonFilter');
     buttonFilter.addEventListener("click", function() {
-      
+      localStorage.clear();
       location.href="{% url 'mapa'  %}"
       
     });

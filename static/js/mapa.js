@@ -53,7 +53,7 @@ map.on('click', function (e) {
   map.forEachFeatureAtPixel(e.pixel, function (feature, layer) {
 
     const coordinate = e.coordinate;
-    
+    console.log(feature.getId())
     
     datos_cartel.forEach(data => {
       
@@ -73,8 +73,9 @@ map.on('click', function (e) {
              +'</div>' //fin contenedor datos renaper
             
           
-            
+           localStorage.setItem(feature.getId(), data.nombre);
            overlay.setPosition(coordinate);
+
           
        }
      })
@@ -83,6 +84,32 @@ map.on('click', function (e) {
   });
   
 });
+
+ function descargar_datos() {
+  const claves = Object.keys(localStorage);
+  const carteles = [];
+
+  //Se almacenan en un array para luego utilizar la informacion y descargar el excel
+  claves.forEach(clave => {
+    const valor = localStorage.getItem(clave);
+    carteles.push({
+      'clave': clave,
+      'valor': valor
+  });
+ });
+  console.log(carteles['clave'])
+
+  datos_cartel.forEach(data => {
+    carteles.forEach(cartel => {
+        if(data.id == cartel.clave){
+          console.log(data.id, data.nombre)
+        }
+    
+    })
+    
+  })
+ 
+}
 
 // CIERRE DE MODAL
 closer.onclick = function() {
