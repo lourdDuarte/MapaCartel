@@ -53,12 +53,11 @@ map.on('click', function (e) {
   map.forEachFeatureAtPixel(e.pixel, function (feature, layer) {
 
     const coordinate = e.coordinate;
-    console.log(feature.getId())
     
     datos_cartel.forEach(data => {
       
        if(feature.getId() == data.id){
-           console.log(data)
+           
            content.innerHTML = '<div>' //inicio contenedor datos presentacion
              +'<div class="div-data">'
              +'<p class= "data-p">Nombre: <span class="data"> '+ " " + data.nombre + '</span></p>'
@@ -88,6 +87,7 @@ map.on('click', function (e) {
  function descargar_datos() {
   const claves = Object.keys(localStorage);
   const carteles = [];
+  const datos = []
 
   //Se almacenan en un array para luego utilizar la informacion y descargar el excel
   claves.forEach(clave => {
@@ -97,19 +97,59 @@ map.on('click', function (e) {
       'valor': valor
   });
  });
-  console.log(carteles['clave'])
+  console.log(carteles)
 
-  datos_cartel.forEach(data => {
-    carteles.forEach(cartel => {
+  carteles.forEach(cartel => {
+    datos_cartel.forEach(data => {
         if(data.id == cartel.clave){
-          console.log(data.id, data.nombre)
+        
+          datos.push({
+            'id':data.id, 
+            'nombre': data.nombre,
+            'proveedor': data.proveedor,
+            'localidad': data.localidad,
+            'latitud': data.latitud,
+            'longitud': data.longitud
+          });
         }
     
     })
     
   })
- 
+  console.log(datos)
+  
+  var wb = XLSX.utils.book_new();
+        wb.Props = {
+                Title: "Carteles",
+                Subject: "Test",
+                Author: "Ministerio de Economia",
+                CreatedDate: new Date(2017,12,19)
+        };
+        
+        wb.SheetNames.push("Test Sheet");
+        datos.forEach(info => {
+          ws_data = [[info.nombre , info.localidad, info.latitud, info.longitud]];
+        })
+        
+        var ws = XLSX.utils.aoa_to_sheet(ws_data);
+        console.log(ws)
+        wb.Sheets["Test Sheet"] = ws;
+        var wbout = XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
+        function s2ab(s) {
+  
+                var buf = new ArrayBuffer(s.length);
+                var view = new Uint8Array(buf);
+                for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+                return buf;
+                
+        }
+   
+        saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), 'test.xlsx');
+        
 }
+
+
+
 
 // CIERRE DE MODAL
 closer.onclick = function() {
