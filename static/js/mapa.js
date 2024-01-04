@@ -8,6 +8,10 @@ var closer = document.getElementById('popup-closer');
 var dato_encontrado = document.getElementById('dato-encontrado');
 var dato_no_encontrado = document.getElementById('dato-no-encontrado');
 var popup_filter = document.getElementById('ol-popup-filter');
+var btn_solicitar = document.getElementById('solicitar-excel');
+var btn_descargar = document.getElementById('descargar-excel');
+var btn_filtros = document.getElementById('filtros');
+
 
 //FIN VARIABLES
 
@@ -61,7 +65,9 @@ map.on('click', function (e) {
            content.innerHTML = '<div>' //inicio contenedor datos presentacion
              +'<div class="div-data">'
              +'<p class= "data-p">Nombre: <span class="data"> '+ " " + data.nombre + '</span></p>'
-             +'<p class= "data-p">Medidas: <span class="data"> '+ " " +data.medidas + '</span></p>'
+             +'<p class= "data-p">Altura: <span class="data"> '+ " " +data.altura + '</span></p>'
+             +'<p class= "data-p">Largo: <span class="data"> '+ " " +data.largo + '</span></p>'
+             +'<p class= "data-p">m²2: <span class="data"> '+ " " +data.metros_cuadrados + '</span></p>'
              +'<p class= "data-p">Direccion:  <span class="data"> '+" " + data.direccion + '</span></p>'
              +'<p class= "data-p">Localidad: <span class="data"> '+" " + data.localidad + '</span></p>'
              +'<p class="data-p">Latitud: <span class="data">' + " " +data.longitud+ '</span></p>'
@@ -83,6 +89,15 @@ map.on('click', function (e) {
   });
   
 });
+  function solicitar_datos() {
+    btn_solicitar.style.visibility = 'hidden';
+    btn_filtros.style.visibility = 'hidden';
+    btn_descargar.style.visibility = 'visible';
+    popup_filter.style.display = 'none';
+
+    localStorage.clear();
+    alert("Seleccionar los carteles que desea descargar o reinicie el mapa")
+  }
 
  function descargar_datos() {
   const claves = Object.keys(localStorage);
@@ -91,10 +106,10 @@ map.on('click', function (e) {
 
   //Se almacenan en un array para luego utilizar la informacion y descargar el excel
   claves.forEach(clave => {
-    const valor = localStorage.getItem(clave);
+    
     carteles.push({
       'clave': clave,
-      'valor': valor
+      
   });
  });
   console.log(carteles)
@@ -102,50 +117,44 @@ map.on('click', function (e) {
   carteles.forEach(cartel => {
     datos_cartel.forEach(data => {
         if(data.id == cartel.clave){
-        
+          
+          
           datos.push({
             'id':data.id, 
             'nombre': data.nombre,
-            'proveedor': data.proveedor,
             'localidad': data.localidad,
+            'proveedor': data.proveedor,
             'latitud': data.latitud,
-            'longitud': data.longitud
+            'longitud': data.longitud,
+            'direccion': data.direccion,
+            'altura': data.altura,
+            'largo':data.largo,
+            'metros_cuadrados': data.metros_cuadrados,
+            'metros_precio': '$' + data.metros_precio
           });
         }
     
     })
     
   })
-  console.log(datos)
+
+
   
-  var wb = XLSX.utils.book_new();
-        wb.Props = {
-                Title: "Carteles",
-                Subject: "Test",
-                Author: "Ministerio de Economia",
-                CreatedDate: new Date(2017,12,19)
-        };
-        
-        wb.SheetNames.push("Test Sheet");
-        datos.forEach(info => {
-          ws_data = [[info.nombre , info.localidad, info.latitud, info.longitud]];
-        })
-        
-        var ws = XLSX.utils.aoa_to_sheet(ws_data);
-        console.log(ws)
-        wb.Sheets["Test Sheet"] = ws;
-        var wbout = XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
-        function s2ab(s) {
+  const worksheet = XLSX.utils.json_to_sheet(datos);
+  const workbook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(workbook, worksheet, "Dates");
+
+  /* fix headers */
+  XLSX.utils.sheet_add_aoa(worksheet, [["Nombre del cartel", "Localidad", "Proveedor", "Latitud", "Longitud", "Direccion", "Altura", "Largo", "Metros cuadrados", "Metros precio"]], { origin: "A1" });
+
+  /* calculate column width */
+  const max_width = datos.reduce((w, r) => Math.max(w, r.nombre.length), 10);
+  worksheet["!cols"] = [ { wch: max_width } ];
+
+  /* create an XLSX file and try to save to Presidents.xlsx */
+  XLSX.writeFile(workbook, "Carteles.xlsx", { compression: true });
   
-                var buf = new ArrayBuffer(s.length);
-                var view = new Uint8Array(buf);
-                for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
-                return buf;
-                
-        }
-   
-        saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), 'test.xlsx');
-        
+  location.reload()
 }
 
 

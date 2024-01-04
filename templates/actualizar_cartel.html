@@ -13,7 +13,9 @@
         <nav>
           <ol class="breadcrumb ol-margin">
             <li class="breadcrumb-item item-style"><a href="{% url 'listado'%}">Actualizar carteles</a></li>
-            <li class="breadcrumb-item item-style"><a target="_blank" href="{% url 'mapa'  %}">Ver Mapa</a></li>
+            {% if  request.user.is_superuser %}
+                <li class="breadcrumb-item item-style"><a target="_blank" href="{% url 'mapa'  %}">Ver Mapa</a></li>
+              {%endif%}
             <li class="breadcrumb-item item-style"><a href="{% url 'listado'  %}">Listado</a></li>
             <li class="breadcrumb-item item-style"><a href="{% url 'logout'  %}">Salir</a></li>
            

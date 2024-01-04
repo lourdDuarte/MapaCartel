@@ -81,8 +81,14 @@
     height: 3em;
     border: 2px solid rgb(21, 88, 195);
     border-radius: 5px;
+    
   }
-
+  .btn-solicitar{
+    visibility: visible;
+  }
+  .btn-descargar{
+    visibility: hidden;
+  }
   .content-btn .ClearButton {
     margin-left: 0.6em;
   }
@@ -170,7 +176,7 @@
   }
   .data-p{
   
-    color: rgb(255, 255, 255);
+    color: #1558c3;
     display: inline-block;
     margin-left: 1em;
   }

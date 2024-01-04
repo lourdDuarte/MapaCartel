@@ -15,8 +15,9 @@
       
       <button type="submit" class="ClearButton" id="buttonFilter"><i class="fa-solid fa-repeat" style="color: #1558c3;"></i> Reiniciar mapa  </button>
       
-      <button class="btn-filtros" onclick="maximizar_filtros()"><i class="fa-solid fa-filter" style="color: #1558c3;"></i> Filtros </button>
-      <button class="btn-filtros" onclick="descargar_datos()"><i class="fa-solid fa-filter" style="color: #1558c3;"></i> Excel</button>
+      <button class="btn-filtros btn-solicitar" id="filtros" onclick="maximizar_filtros()"><i class="fa-solid fa-filter" style="color: #1558c3;"></i> Filtros </button>
+      <button class="btn-filtros btn-solicitar " id="solicitar-excel" onclick="solicitar_datos()"><i class="fa-solid fa-filter" style="color: #1558c3;"></i>Solicitar Excel</button>
+      <button class="btn-filtros btn-descargar" id="descargar-excel" onclick="descargar_datos()"><i class="fa-solid fa-filter" style="color: #1558c3;"></i>Descargar Excel</button>
       <h1>Proveedores:</h1>
       {% for prov in proveedor  %}
       <p>{{ prov.nombre }}: <img  src="/media/{{ prov.icono }}" alt="Imagen"></p>
@@ -132,14 +133,19 @@
         {% for ubi in ubicaciones  %}
             {
                 'id':{{ubi.id}},
+                'proveedor':'{{ubi.proveedor}}',
                 'nombre': '{{ubi.nombre}}',
-                'medidas':'{{ubi.medidas}}',
+                'altura':'{{ubi.altura}}',
+                'largo':'{{ubi.largo}}',
                 'direccion':'{{ubi.direccion}}',
                 'localidad':'{{ubi.localidad}}',
                 'ultima_modificacion': '{{ubi.fecha_actualizacion}}',
                 'latitud': {{ubi.latitud}},
                 'longitud': {{ubi.longitud}},
-                'imagen':'{{ubi.imagen_cartel}}'
+                'imagen':'{{ubi.imagen_cartel}}',
+                'metros_cuadrados':{{ubi.metros_cuadrados}},
+                'metros_precio': '{{ubi.metros_cuadrados_precio}}'
+                
             },
     
         {% endfor %}
