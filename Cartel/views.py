@@ -77,6 +77,9 @@ class CartelTemplateView(TemplateView):
 
         form = CartelForm(instance=cartel)
         if request.method == 'POST':
+             altura = request.POST['altura']
+             largo = request.POST['largo']
+             metros_final = int(largo) * int(altura)
              if request.POST['precio']:
                if request.POST['precio'] == '0':
                    total = 0
@@ -94,6 +97,8 @@ class CartelTemplateView(TemplateView):
                     cartel.metros_cuadrados_precio = total
                 else:
                     cartel.metros_cuadrados_precio = precio_metros_actual
+
+                cartel.metros_cuadrados = metros_final
                 form.save()
                 return redirect('listado')
              else:

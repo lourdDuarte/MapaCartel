@@ -88,7 +88,8 @@ nav{
 }
 
 .btn-margin{
-    margin-top: 2em;
+    margin-top: 1em;
+    margin-bottom: 2em;
     
 }
 
@@ -99,4 +100,9 @@ nav{
     color: white;
     border-color: black !important;
     padding: 7px 10px;
+}
+
+.span-info{
+    color: aliceblue;
+    margin-left: 25.5em;
 }

@@ -120,7 +120,6 @@ map.on('click', function (e) {
           
           
           datos.push({
-            'id':data.id, 
             'nombre': data.nombre,
             'localidad': data.localidad,
             'proveedor': data.proveedor,
@@ -138,7 +137,7 @@ map.on('click', function (e) {
     
   })
 
-
+ console.log(datos)
   
   const worksheet = XLSX.utils.json_to_sheet(datos);
   const workbook = XLSX.utils.book_new();

@@ -102,70 +102,77 @@
       location.href="{% url 'mapa'  %}"
       
     });
- 
-    coordenadas = [
-      {% for ubi in ubicaciones  %}
-            {
-                'id':{{ubi.id}},
-                'proveedor':'{{ubi.proveedor.id}}',
-                'latitud': {{ubi.latitud}},
-                'longitud': {{ubi.longitud}}
-                
-            },
-    
-      {% endfor %}
-        
 
-    ]
-
-    iconos = [
-      {% for icon in proveedor %}
-            {
-              'id':{{icon.id}},
-              'ruta':'{{icon.icono}}'
-            },
-
-      {% endfor%}
-    ]
-    
-   
-    datos_cartel = [
+    (function() {
+        coordenadas = [
         {% for ubi in ubicaciones  %}
-            {
-                'id':{{ubi.id}},
-                'proveedor':'{{ubi.proveedor}}',
-                'nombre': '{{ubi.nombre}}',
-                'altura':'{{ubi.altura}}',
-                'largo':'{{ubi.largo}}',
-                'direccion':'{{ubi.direccion}}',
-                'localidad':'{{ubi.localidad}}',
-                'ultima_modificacion': '{{ubi.fecha_actualizacion}}',
-                'latitud': {{ubi.latitud}},
-                'longitud': {{ubi.longitud}},
-                'imagen':'{{ubi.imagen_cartel}}',
-                'metros_cuadrados':{{ubi.metros_cuadrados}},
-                'metros_precio': '{{ubi.metros_cuadrados_precio}}'
-                
-            },
-    
-        {% endfor %}
-
-    ]
-
-    filtros_ubicacion = 
-    [
-      {% for filtro in data  %}
-        {
-          'id': {{filtro.id}},
-          'proveedor':'{{filtro.proveedor.id}}',
-          'longitud':{{filtro.longitud}}, 
-          'latitud':{{filtro.latitud}}
-        
-        },
+              {
+                  'id':{{ubi.id}},
+                  'proveedor':'{{ubi.proveedor.id}}',
+                  'latitud': {{ubi.latitud}},
+                  'longitud': {{ubi.longitud}}
+                  
+              },
       
-      {% endfor %}
-    ]
-    console.log(filtros_ubicacion)
+        {% endfor %}
+          
+
+      ];
+
+      
+
+      iconos = [
+        {% for icon in proveedor %}
+              {
+                'id':{{icon.id}},
+                'ruta':'{{icon.icono}}'
+              },
+
+        {% endfor%}
+      ];
+      
+    
+      datos_cartel = [
+          {% for ubi in ubicaciones  %}
+              {
+                  'id':{{ubi.id}},
+                  'proveedor':'{{ubi.proveedor}}',
+                  'nombre': '{{ubi.nombre}}',
+                  'altura':'{{ubi.altura}}',
+                  'largo':'{{ubi.largo}}',
+                  'direccion':'{{ubi.direccion}}',
+                  'localidad':'{{ubi.localidad}}',
+                  'ultima_modificacion': '{{ubi.fecha_actualizacion}}',
+                  'latitud': {{ubi.latitud}},
+                  'longitud': {{ubi.longitud}},
+                  'imagen':'{{ubi.imagen_cartel}}',
+                  'metros_cuadrados':{{ubi.metros_cuadrados}},
+                  'metros_precio': '{{ubi.metros_cuadrados_precio}}'
+                  
+              },
+      
+          {% endfor %}
+
+      ]
+
+      filtros_ubicacion = 
+      [
+        {% for filtro in data  %}
+          {
+            'id': {{filtro.id}},
+            'proveedor':'{{filtro.proveedor.id}}',
+            'longitud':{{filtro.longitud}}, 
+            'latitud':{{filtro.latitud}}
+          
+          },
+        
+        {% endfor %}
+      ]
+    
+
+    })();
+ 
+    
     
   </script>
 </body>
