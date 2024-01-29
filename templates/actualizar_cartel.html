@@ -83,6 +83,15 @@
                     </div>
                     
                     {% endif %}
+                    {% if not request.user.is_superuser %}
+                    <div class="col-sm-4" style="display:none">
+                      <select class="form-select" style="margin-left:3.8em;" name="precio" aria-label="State">
+                        
+                            <option value="0" selected>Proveedor: {{cartel.proveedor}}</option>
+
+                        </select>
+                    </div>
+                    {% endif %}
                     <div class="col-12 div-input">
                       {{form.altura.errors}}
                        <label for="{{form.altura.id_for_label}}" class="col-lg-3 control-label">Altura</label>
