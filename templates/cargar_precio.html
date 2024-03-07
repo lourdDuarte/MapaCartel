@@ -1,0 +1,84 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block head_content %}
+
+    <title>Precios</title>
+{% endblock head_content %}
+
+{% block container %}
+<main class="main-add">
+  <div class="container-fluid px-4">   
+    <div class="card shadow-lg border-0 rounded-lg mt-5">
+      <div class="card-header"><h3 class="text-center font-weight-light my-4">Ingresar precio de Carteles</h3></div>
+      <div class="card-body">
+            <form role="form" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+                
+                {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li
+                                {% if message.tags %} 
+                                    class="{{ message.tags }}"
+                                {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <div class="row mb-3">
+                  <input type="hidden" name="usuario" value="{{request.user.id}}">
+                  {% if  request.user.is_superuser %}
+                  <div class="col-md-6 div-add-cartel">
+                    <div class="form-floating">
+                      <select class="form-select" name="proveedor" aria-label="State">
+                        <option selected>Seleccionar</option>
+                        {% for p in provedores  %}
+                        <option value="{{p.id}}">{{p.nombre}}</option>
+                        {% endfor %}
+                        
+                       
+                      </select>
+                      <label for="inputFirstName">Proveedor</label>
+                    </div>
+                  </div>
+
+                  {%else%}
+                  {% for p in provedores  %}
+                        {% if p.user.id == request.user.id  %}
+                            <input type="hidden" name="proveedor" value="{{p.id}}">
+                        
+                        {% endif %}
+                                    
+                                
+                  {% endfor %}
+
+                  {%endif%} 
+                  <div class="col-md-6 div-add-cartel">
+                    <div class="form-floating">
+                        <input class="form-control" type="text" name="precio" />
+                        <label for="inputFirstName">Precio</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 div-add-cartel">
+                    <div class="form-floating">
+                        <input class="form-control" type="text" name="descripcion" />
+                        <label for="inputFirstName">Descripcion</label>
+                    </div>
+                  </div>
+                  
+                  
+              
+              <div class="card-footer text-center py-2" style="margin-top:2em">
+                <button type="submit" style="background: #1558c3;" class="btn btn-primary">Guardar</button>
+              </div>
+          </form>
+      </div>
+      
+  </div>
+  </div>
+</main>
+   
+
+
+
+{% endblock container %}

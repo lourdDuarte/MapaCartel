@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block head_content %}
 
-<title>OpenLayers 3 example</title>
+<title>Mapa</title>
 
 {% endblock head_content %}
    
@@ -9,9 +9,7 @@
 <body style="overflow-x: hidden; overflow-y: hidden;">
   <section style="overflow-x: hidden; overflow-y: hidden;">
     <div class="content-btn" style="overflow-x: hidden; overflow-y: hidden;">
-      <a href='{% url "dashboard" %}'>
-        <button class="btn-dashboard" ><i class="fa-sharp fa-solid fa-gauge" style="color: #1558c3;"></i> Resumen</button>
-      </a> 
+     
       
       <button type="submit" class="ClearButton" id="buttonFilter"><i class="fa-solid fa-repeat" style="color: #1558c3;"></i> Reiniciar mapa  </button>
       
@@ -94,7 +92,7 @@
   
   <script>
 
- 
+    
 
     var buttonFilter = document.getElementById('buttonFilter');
     buttonFilter.addEventListener("click", function() {
@@ -103,8 +101,8 @@
       
     });
 
-    (function() {
-        coordenadas = [
+    function obtenerCoordenadas() {
+      return coordenadas = [
         {% for ubi in ubicaciones  %}
               {
                   'id':{{ubi.id}},
@@ -114,14 +112,15 @@
                   
               },
       
-        {% endfor %}
-          
+        {% endfor %}    
 
       ];
+    }
+
 
       
-
-      iconos = [
+    function obtenerIconos(){
+      return iconos = [
         {% for icon in proveedor %}
               {
                 'id':{{icon.id}},
@@ -131,8 +130,11 @@
         {% endfor%}
       ];
       
-    
-      datos_cartel = [
+
+    }
+      
+    function obtenerDatosCartel(){
+      return datos_cartel = [
           {% for ubi in ubicaciones  %}
               {
                   'id':{{ubi.id}},
@@ -155,7 +157,10 @@
 
       ]
 
-      filtros_ubicacion = 
+    }
+      
+    function obtenerDatosFiltrados(){
+      return filtros_ubicacion = 
       [
         {% for filtro in data  %}
           {
@@ -168,10 +173,15 @@
         
         {% endfor %}
       ]
-    
+    }
+      
 
-    })();
- 
+    obtenerCoordenadas();
+    obtenerDatosCartel();
+    obtenerDatosFiltrados();
+    obtenerIconos();
+    
+    
     
     
   </script>

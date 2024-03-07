@@ -1,0 +1,52 @@
+<div id="layoutSidenav_nav">
+    <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+            <div class="nav">
+                {% if  request.user.is_superuser %}
+                    <div class="sb-sidenav-menu-heading">Administrador</div>
+                    <a class="nav-link" href="{% url 'dashboard' %}">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-gauge"></i></div>
+                        Panel
+                    </a>
+                    <a class="nav-link" href="{% url 'mapa' %}">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-map"></i></div>
+                        Mapa
+                    </a>
+                    <a class="nav-link" href="{% url 'admin:index' %}" target="_blank">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-lock"></i></div>
+                        Sitio admin
+                    </a>
+                {% endif %}
+                
+                <div class="sb-sidenav-menu-heading">Opciones de carteles</div>
+                <a class="nav-link" href="{% url 'listado' %}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-spinner"></i></div>
+                    Actualizar Cartel
+                </a>
+                <a class="nav-link" href="{% url 'formulario' %}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-plus"></i></div>
+                    Nuevo Cartel
+                </a>
+                
+                <div class="sb-sidenav-menu-heading">Precios</div>
+                <a class="nav-link" href="{% url 'listado' %}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-dollar-sign"></i></div>
+                    Lista de precios
+                </a>
+                <a class="nav-link" href="{% url 'nuevo-precio' %}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-plus"></i></div>
+                    Nuevo precio
+                </a>
+                <div class="sb-sidenav-menu-heading">Sesion</div>
+                <a class="nav-link" href="{% url 'logout' %}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-right-from-bracket"></i></div>
+                    Cerrar sesion
+                </a>
+            </div>
+        </div>
+        <div class="sb-sidenav-footer">
+            <div class="small">En sesion activa:</div>
+            {{ request.user}}
+        </div>
+    </nav>
+</div>

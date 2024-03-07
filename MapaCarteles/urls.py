@@ -19,6 +19,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from Cartel.views import CartelTemplateView
+from precioProveedor import views as precio
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,7 +33,8 @@ urlpatterns = [
     path('listado/', CartelTemplateView.listado_cartel, name = 'listado'),
     path('login/', CartelTemplateView.login, name = 'login'),
     path('logout/', CartelTemplateView.logout_view, name = 'logout'),
-    path('registrarse/', CartelTemplateView.solicitud_usuario, name = 'registrarse')
+    path('registrarse/', CartelTemplateView.solicitud_usuario, name = 'registrarse'),
+    path('nuevo-precio/', precio.add_precio, name = 'nuevo-precio'),
     
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

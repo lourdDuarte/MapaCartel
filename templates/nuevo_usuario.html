@@ -1,85 +1,76 @@
-
-{% extends 'base.html' %}
 {% load static %}
-{% block head_content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="{% static 'css/form.css' %}"> 
+   <link href="{% static 'admin/css/styles.css' %}" rel="stylesheet" />
 
-    <title>Solicitud de usuario</title>
-{% endblock head_content %}
-
-{% block container %}
-<main id="main" class="main main-class">
-   
-    <div class="pagetitle pegatitle-margin">
-       
-        <h1>Solicitud de usuario</h1>
-        <nav>
-          <ol class="breadcrumb ol-margin">
-            <li class="breadcrumb-item item-style">Se solicita un correo debido a que luego se mandara la informacion de acceso mediante ese medio</li>
-
-           
-          </ol>
-        </nav>
-    </div><!-- End Page Title -->
-    <section class="section">
-        <div class="row">
-          <div class="col-lg-6">
-    
-            <div class="card div-form">
-              <div class="card-body">
-               
-    
-                <!-- Horizontal Form -->
-                <form role="form" method="POST" enctype="multipart/form-data" action="{% url 'registrarse'  %}">
-                {% csrf_token %}
-                
-                {% if messages %}
-                    <ul class="messages">
-                        {% for message in messages %}
-                            <li
-                                {% if message.tags %} 
-                                    class="{{ message.tags }}"
-                                {% endif %}>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-                  <div class="row mb-3 ">
-                    <div class="row mb-3 ">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre de la dependencia</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" name="nombre_dependencia" >
-                        </div>
-                      </div>
-                      
-                     
-                      
-                      <div class="row mb-3 ">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Correo electronico</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" name="correo">
-                        </div>
-                      </div>
-                      <div class="row mb-3 ">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Comentario</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" name="comentario">
-                        </div>
-                      </div>
-                      
-                      
-                  <div class="text-center">
-                    <button type="submit" style="background: #1558c3;" class="btn btn-primary">Solicitar</button>
+  <title>Solicitud de usuario</title>
+</head>
+<body>
+    <main class="main-class" >
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-8" style="margin-top:5em">
+                <div class="card shadow-lg border-0 rounded-lg mt-5">
                   
+                  <div class="card-header"><h3 class="text-center font-weight-light my-4">Solicitar Usuario nuevo</h3>
+                    
+                        <p class="p-info-alta">Se solicita un correo debido a que luego se mandara la informacion de acceso mediante ese medio.</p>
+          
+                  </div>
+                  <div class="card-body">
+                      <form role="form" method="POST" enctype="multipart/form-data" action="{% url 'registrarse'  %}">
+                        {% csrf_token %}
+                        
+                        {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                    <li
+                                        {% if message.tags %} 
+                                            class="{{ message.tags }}"
+                                        {% endif %}>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        <div class="row mb-12 ">
+                              <div class="col-md-12 div-add-cartel">
+                                <div class="form-floating">
+                                    <input class="form-control" type="text" name="nombre_dependencia" />
+                                    <label for="inputFirstName">Nombre de la dependencia</label>
+                                </div>
+                              </div>
+                              <div class="col-md-12 div-add-cartel">
+                                <div class="form-floating">
+                                  <input type="text" class="form-control" name="correo">
+                                  <label for="inputFirstName">Correo electronico</label>
+                                </div>
+                              </div>
+                              <div class="col-md-12 div-add-cartel">
+                                <div class="form-floating">
+                                  <input type="text" class="form-control" name="comentario">
+                                  <label for="inputFirstName">Comentario</label>
+                                </div>
+                              </div>
+                                
+                              
+                            
+                            
+                            <div class="text-center">
+                              <button type="submit" style="background: #1558c3; margin-top:2em" class="btn btn-primary">Solicitar</button>
+                            </div>
+                          
+                        </div>
+                      </form><!-- End Horizontal Form -->
                     
                   </div>
-                </form><!-- End Horizontal Form -->
-    
+                </div>
               </div>
             </div>
-        </div>
-    </section>
+          </div>
+</body>
+</html>
 
 
-</main>
-
-
-{% endblock container %}

@@ -7,158 +7,146 @@
 {% endblock head_content %}
 
 {% block container %}
-<main id="main" class="main main-class">
-    <div class="pagetitle pegatitle-margin">
-        <h1>Actualizar cartel</h1>
-        <nav>
-          <ol class="breadcrumb ol-margin">
-            <li class="breadcrumb-item item-style"><a href="{% url 'listado'%}">Actualizar carteles</a></li>
-            {% if  request.user.is_superuser %}
-                <li class="breadcrumb-item item-style"><a target="_blank" href="{% url 'mapa'  %}">Ver Mapa</a></li>
-              {%endif%}
-            <li class="breadcrumb-item item-style"><a href="{% url 'listado'  %}">Listado</a></li>
-            <li class="breadcrumb-item item-style"><a href="{% url 'logout'  %}">Salir</a></li>
-           
-          </ol>
-        </nav>
-        <span class="span-info">En el caso de actualizar las medidas (alto y largo) solo modificar esos campos. M²2 se actualiza de manera automatica</span>
-    </div><!-- End Page Title -->
-    <section class="section">
-        <div class="row">
-          <div class="col-lg-6">
-    
-            <div class="card div-form">
-              <div class="card-body">
-               
-    
-                <!-- Horizontal Form -->
-                <form role="form" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                
-                {% if messages %}
-                    <ul class="messages">
-                        {% for message in messages %}
-                            <li
-                                {% if message.tags %} 
-                                    class="{{ message.tags }}"
-                                {% endif %}>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-                    <div style="display:none" >
-                        {{form.usuario.errors}}
-                        <label for="{{form.usuario.id_for_label}}" class="col-lg-3 control-label">usuario</label>
-                        {{form.usuario}}
+<main class="main-add">
+  <div class="container-fluid px-4">   
+    <div class="card shadow-lg border-0 rounded-lg mt-5">
+      <div class="card-header"><h3 class="text-center font-weight-light my-4">Actualizar cartel</h3></div>
+      <div class="card-body">
+            <p class="span-info">En el caso de actualizar las medidas (alto y largo) solo modificar esos campos. M²2 se actualiza de manera automatica</p>
+            <form role="form" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              
+              {% if messages %}
+                  <ul class="messages">
+                      {% for message in messages %}
+                          <li
+                              {% if message.tags %} 
+                                  class="{{ message.tags }}"
+                              {% endif %}>{{ message }}</li>
+                      {% endfor %}
+                  </ul>
+              {% endif %}
+                  <div style="display:none" >
+                      {{form.usuario.errors}}
+                      <label for="{{form.usuario.id_for_label}}" class="col-lg-3 control-label">usuario</label>
+                      
+                      {{form.usuario}}
+                  </div>
+                  <div class="col-12 div-input">
+                     {{form.nombre.errors}}
+                      <label for="{{form.nombre.id_for_label}}" class="col-lg-3 control-label">Nombre del cartel </label>
+                      <div class="div-upd"> {{form.nombre}} </div>
+                     
+                      
+                  </div>
+                  <div class="col-12 div-input">
+                    {{form.metros_cuadrados.errors}}
+                     <label for="{{form.metros_cuadrados.id_for_label}}"  class="col-lg-3 control-label">M²2</label>
+                     <div class="div-upd">{{form.metros_cuadrados}}</div>
+                     
+                  </div>
+                  {% if request.user.is_superuser %}
+                  <div class="row mb-2 mt-2 ">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Precios($)</label>
+                    <div class="col-sm-2">
+                        <select class="form-select" style="margin-left:8em;  margin-bottom:1em;" name="precio" aria-label="State">
+                          {% for precio in precios  %}
+                              {% if precio.proveedor ==  cartel.proveedor%}
+                              <option value="0" selected>Proveedor: {{cartel.proveedor}}</option>
+                            
+                              <option value="{{precio.precio}}">{{precio.precio}} - {{precio.descripcion}}</option>
+                              {% else %}
+                              <option value="0" selected>Sin precios cargados</option>
+                              {% endif %}
+                            
+                            {% endfor %}
+                            
+                           
+                          </select>
                     </div>
-                    <div class="col-12 div-input">
-                       {{form.nombre.errors}}
-                        <label for="{{form.nombre.id_for_label}}" class="col-lg-3 control-label">Nombre del cartel </label>
-                       {{form.nombre}}
-                        
-                    </div>
-                    <div class="col-12 div-input">
-                      {{form.metros_cuadrados.errors}}
-                       <label for="{{form.metros_cuadrados.id_for_label}}"  class="col-lg-3 control-label">M²2</label>
-                      <span>{{form.metros_cuadrados}}<span>
-                       
-                    </div>
-                    {% if request.user.is_superuser %}
-                    <div class="row mb-4 mt-4 ">
-                      <label for="inputEmail3" class="col-sm-2 col-form-label">Precios($)</label>
-                      <div class="col-sm-4">
-                          <select class="form-select" style="margin-left:3.8em;" name="precio" aria-label="State">
-                            {% for precio in precios  %}
-                                {% if precio.proveedor ==  cartel.proveedor%}
-                                <option value="0" selected>Proveedor: {{cartel.proveedor}}</option>
-                              
-                                <option value="{{precio.precio}}">{{precio.precio}} - {{precio.descripcion}}</option>
-                                
-                                {% endif %}
-                              
-                              {% endfor %}
-                              
-                             
-                            </select>
-                      </div>
-                    </div>
-                    
-                    {% endif %}
-                    {% if not request.user.is_superuser %}
-                    <div class="col-sm-4" style="display:none">
-                      <select class="form-select" style="margin-left:3.8em;" name="precio" aria-label="State">
-                        
-                            <option value="0" selected>Proveedor: {{cartel.proveedor}}</option>
+                  </div>
+                  
+                  {% endif %}
+                  {% if not request.user.is_superuser %}
+                  <div class="col-sm-4" style="display:none">
+                    <select class="form-select" style="margin-left:3.8em;" name="precio" aria-label="State">
+                      
+                          <option value="0" selected>Proveedor: {{cartel.proveedor}}</option>
 
-                        </select>
-                    </div>
-                    {% endif %}
-                    <div class="col-12 div-input">
-                      {{form.altura.errors}}
-                       <label for="{{form.altura.id_for_label}}" class="col-lg-3 control-label">Altura</label>
-                      {{form.altura}}
+                      </select>
+                  </div>
+                  {% endif %}
+                  <div class="col-12 div-input">
+                    {{form.altura.errors}}
+                     <label for="{{form.altura.id_for_label}}" class="col-lg-3 control-label">Altura</label>
+                     <div class="div-upd">{{form.altura}}</div>
+                     
+                 </div>
+                 <div class="col-12 div-input">
+                  {{form.largo.errors}}
+                   <label for="{{form.largo.id_for_label}}" class="col-lg-3 control-label">Largo</label>
+                   <div class="div-upd">{{form.largo}}</div>
+                   
+                  </div>
+                  <div class="col-12 div-input">
+                      {{form.latitud.errors}}
+                       <label for="{{form.latitud.id_for_label}}" class="col-lg-3 control-label">Latitud</label>
+                       <div class="div-upd">{{form.latitud}}</div>
                        
                    </div>
                    <div class="col-12 div-input">
-                    {{form.largo.errors}}
-                     <label for="{{form.largo.id_for_label}}" class="col-lg-3 control-label">Largo</label>
-                    {{form.largo}}
-                     
-                    </div>
-                    <div class="col-12 div-input">
-                        {{form.latitud.errors}}
-                         <label for="{{form.latitud.id_for_label}}" class="col-lg-3 control-label">Latitud</label>
-                        {{form.latitud}}
-                         
-                     </div>
-                     <div class="col-12 div-input">
-                        {{form.longitud.errors}}
-                         <label for="{{form.longitud.id_for_label}}" class="col-lg-3 control-label">Longitud</label>
-                        {{form.longitud}}
-                         
-                     </div>
-                     <div class="col-12 div-input">
-                        {{form.direccion.errors}}
-                         <label for="{{form.direccion.id_for_label}}" class="col-lg-3 control-label">Dirección</label>
-                        {{form.direccion}}
-                         
-                     </div>
-                     <div class="col-12 div-input" style="display:none">
-                      {{form.proveedor.errors}}
-                       <label for="{{form.proveedor.id_for_label}}" class="col-lg-3 control-label">Proveedor</label>
-                      {{form.proveedor}}
-                       
-                    </div>
-                    <div class="col-12 div-input">
-                      {{form.imagen_cartel.errors}}
-                       <label for="{{form.imagen_cartel.id_for_label}}" class="col-lg-3 control-label">Imagen del cartel</label>
-                      {{form.imagen_cartel}}
+                      {{form.longitud.errors}}
+                       <label for="{{form.longitud.id_for_label}}" class="col-lg-3 control-label">Longitud</label>
+                       <div class="div-upd">{{form.longitud}}</div>
                        
                    </div>
-                    <div class="col-12 div-input">
-                        {{form.localidad.errors}}
-                         <label for="{{form.localidad.id_for_label}}" class="col-lg-3 control-label">Localidad</label>
-                        {{form.localidad}}
-                         
-                    </div>
-                    </div>
-                    
-                    
-                    
-                    
-                  
-                  <div class="text-center">
-                    <button type="submit" style="background: #1558c3;" class="btn btn-primary btn-margin">Actualizar</button>
-                    
+                   
+                   <div class="col-12 div-input">
+                      {{form.direccion.errors}}
+                       <label for="{{form.direccion.id_for_label}}" class="col-lg-3 control-label">Dirección</label>
+                       <div class="div-upd">{{form.direccion}}</div>
+                       
+                   </div>
+                   <div class="col-12 div-input" style="display:none">
+                    {{form.proveedor.errors}}
+                     <label for="{{form.proveedor.id_for_label}}" class="col-lg-3 control-label">Proveedor</label>
+                     <div class="div-upd">{{form.proveedor}}</div>
+                     
                   </div>
-                </form><!-- End Horizontal Form -->
-    
-              </div>
-            </div>
-        </div>
-    </section>
-
-
+                  <div class="col-12 div-input">
+                    {{form.localidad.errors}}
+                     <label for="{{form.localidad.id_for_label}}" class="col-lg-3 control-label">Localidad</label>
+                     <div class="div-upd"> {{form.localidad}}</div>
+                     
+                  
+                  </div>
+                  <div class="col-12 div-input">
+                    {{form.imagen_cartel.errors}}
+                     <label for="{{form.imagen_cartel.id_for_label}}" class="col-lg-3 control-label">Imagen del cartel</label>
+                     <div class="div-upd-image">{{form.imagen_cartel}}</div>
+                     
+                 </div>
+                  
+                  
+                  
+                  
+                  
+                
+                <div class="text-center">
+                  <button type="submit" style="background: #1558c3; margin-top:2em" class="btn btn-primary ">Actualizar</button>
+                  
+                </div>
+              </form><!-- End Horizontal Form -->
+      </div>
+      
+  </div>
+  </div>
 </main>
+
+
+
+
+
 
 
 {% endblock container %}
@@ -174,4 +162,3 @@
 
 
 
-{

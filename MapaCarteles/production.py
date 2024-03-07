@@ -73,7 +73,7 @@ TEMPLATES = [
 ]
 
 
-print(BASE_DIR)
+
 
 WSGI_APPLICATION = 'MapaCarteles.wsgi.application'
 
@@ -82,15 +82,12 @@ WSGI_APPLICATION = 'MapaCarteles.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-      'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'carteles_db',
-        'USER': 'postgres',
-        'PASSWORD': 'dbmineco387',
-        'HOST': '167.71.170.134',
-        'PORT': '5432',
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 
 # Password validation

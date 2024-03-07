@@ -2,20 +2,13 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block head_content %}
-<title>Dashboard</title>
+<title>Panel</title>
 {% endblock head_content %}
 {% block container %}
 <body>
     <main >
-        <h1>CARTELES</h1>
-        <div class="div-button">
-            
-            <a href="{% url 'mapa'  %}" >
-                <button class="btn"><i class="animation"></i>Ver mapa <i class="fa-solid fa-map-location-dot"></i><i class="animation"></i>
-                </button>
-            </a>
-            
-        </div>
+        <h1 class="title-panel"><i class="fa-solid fa-arrow-right" style="font-size:25px"></i> Filtrar carteles</h1>
+        
         <div class="content-filter" id="content-filter">
             <a href="{% url 'dashboard' %}">
                 <button type="button"  class="btn btn-primary btn-ver-todo">Ver todo</button>
@@ -31,7 +24,7 @@
                         
                         {% endfor %}
                     </select>
-                    <button type="submit"  class="btn btn-primary">Filtrar</button>
+                    <button type="submit" class="btn-filter-prov">Filtrar</button>
                     
 
                 </div>
@@ -42,10 +35,13 @@
                     {% for total in total_final  %}
                     
                         {% if total.localidad_id == localidad.id  %}
-                            <div class="card">
-                            <h1 class="title-card"> Cantidad en: {{localidad.nombre}}</h1>
-                            <p class="resultado">{{total.total}}</p>
-                            </div> 
+                        <div class="card-panel">
+                            <div class="bg">
+                                <h1 class="title-card"> Cantidad en: {{localidad.nombre}}</h1>
+                                <p class="resultado">{{total.total}}</p>
+                            </div>
+                            <div class="blob"></div>
+                        </div> 
                         
                         {% endif %}
                     

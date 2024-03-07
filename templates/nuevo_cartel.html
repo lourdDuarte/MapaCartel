@@ -3,35 +3,17 @@
 {% load static %}
 {% block head_content %}
 
-    <title>Carga de obra</title>
+    <title>Nuevo Cartel</title>
 {% endblock head_content %}
 
 {% block container %}
-<main id="main" class="main main-class">
-    <div class="pagetitle pegatitle-margin">
-        <h1>Cargar nuevo cartel</h1>
-        <nav>
-          <ol class="breadcrumb ol-margin">
-            <li class="breadcrumb-item item-style"><a href="{% url 'listado'%}">Actualizar carteles</a></li>
-          {% if  request.user.is_superuser %}
-            <li class="breadcrumb-item item-style"><a target="_blank" href="{% url 'mapa'  %}">Ver Mapa</a></li>
-          {%endif%}
-            <li class="breadcrumb-item item-style"><a href="{% url 'logout'  %}">Salir</a></li>
-           
-          </ol>
-        </nav>
-     </div><!-- End Page Title -->
-    <section class="section">
-        <div class="row">
-          <div class="col-lg-6">
-    
-            <div class="card div-form">
-              <div class="card-body">
-               
-    
-                <!-- Horizontal Form -->
-                <form role="form" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
+<main class="main-add">
+  <div class="container-fluid px-4">   
+    <div class="card shadow-lg border-0 rounded-lg mt-5">
+      <div class="card-header"><h3 class="text-center font-weight-light my-4">Nuevo cartel</h3></div>
+      <div class="card-body">
+            <form role="form" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
                 
                 {% if messages %}
                     <ul class="messages">
@@ -43,103 +25,115 @@
                         {% endfor %}
                     </ul>
                 {% endif %}
-                  <div class="row mb-3 ">
-                    <div class="row mb-3 ">
-                        <input type="hidden" name="usuario" value="{{request.user.id}}">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre </label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" name="nombre" >
-                        </div>
-                      </div>
-                      
-                      <div class="row mb-3 ">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Altura de cartel</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" name="altura" id="altura" onchange="calcular_metros()">
-                        </div>
-                      </div>
+                <div class="row mb-3">
+                  <input type="hidden" name="usuario" value="{{request.user.id}}">
+                
+                  <div class="col-md-6 div-add-cartel">
+                    <div class="form-floating">
+                        <input class="form-control" type="text" name="nombre" />
+                        <label for="inputFirstName">Nombre del cartel</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 div-add-cartel">
+                    <div class="form-floating">
+                        <input class="form-control" type="text" name="altura" id="altura" onchange="calcular_metros()" />
+                        <label for="inputFirstName">Altura de cartel</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 div-add-cartel">
+                    <div class="form-floating">
+                        <input class="form-control" type="text" name="largo" id="largo" onchange="calcular_metros()" />
+                        <label for="inputFirstName">Largo de cartel</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 div-add-cartel">
+                    <div class="form-floating">
+                        <input class="form-control" type="text" name="metros_cuadrados" id="metros_cuadrados" />
+                        <label for="inputFirstName">Metros cuadrados</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 div-add-cartel">
+                    <div class="form-floating">
+                        <input class="form-control" type="text"  name="latitud" id="latitud" />
+                        <label for="inputFirstName">Latitud</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 div-add-cartel">
+                    <div class="form-floating">
+                        <input class="form-control" type="text"  name="longitud" id="longitud" />
+                        <label for="inputFirstName">Longitud</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 div-add-cartel">
+                    <div class="form-floating">
+                        <input class="form-control" type="text"  name="direccion" />
+                        <label for="inputFirstName">Direccion</label>
+                    </div>
+                  </div>
 
-                      <div class="row mb-3 ">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Largo de cartel</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" name="largo" id="largo" onchange="calcular_metros()">
-                        </div>
-                      </div>
+                  {% if  request.user.is_superuser %}
+                  <div class="col-md-6 div-add-cartel">
+                    <div class="form-floating">
+                      <select class="form-select" name="proveedor" aria-label="State">
+                        <option selected>Seleccionar</option>
+                        {% for p in proveedores  %}
+                        <option value="{{p.id}}">{{p.nombre}}</option>
+                        {% endfor %}
+                        
+                       
+                      </select>
+                      <label for="inputFirstName">Proveedor</label>
+                    </div>
+                  </div>
 
-                      <div class="row mb-3 ">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Metros cuadrados</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" name="metros_cuadrados" id="metros_cuadrados">
-                        </div>
-                      </div>
-                      
-                      <div class="row mb-3 ">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Latitud</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" name="latitud" id="latitud">
-                        </div>
-                      </div>
-                      <div class="row mb-3 ">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Longitud</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" name="longitud" id="longitud">
-                        </div>
-                      </div>
-                      <div class="row mb-3 ">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Dirección</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" name="direccion">
-                        </div>
-                      </div>
-                      
-                            
-                               
-                      {% for p in proveedores  %}
+                  {%else%}
+                  {% for p in proveedores  %}
                         {% if p.user.id == request.user.id  %}
                             <input type="hidden" name="proveedor" value="{{p.id}}">
                         
                         {% endif %}
                                     
                                 
-                     {% endfor %}
-                                
-                               
-                              
+                  {% endfor %}
+
+                  {%endif%}
+
+                  <div class="col-md-6 div-add-cartel">
+                    <div class="form-floating">
+                      <select class="form-select" name="localidad" aria-label="State">
+                        <option selected>Seleccionar</option>
+                        {% for l in localidad  %}
+                        <option value="{{l.id}}">{{l.nombre}}</option>
+                        {% endfor %}
                         
-                      <div class="row mb-3 ">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Localidad</label>
-                        <div class="col-sm-10">
-                            <select class="form-select" name="localidad" aria-label="State">
-                                <option selected>Seleccionar</option>
-                                {% for l in localidad  %}
-                                <option value="{{l.id}}">{{l.nombre}}</option>
-                                {% endfor %}
-                                
-                               
-                              </select>
-                        </div>
-                      </div>
+                       
+                      </select>
+                      <label for="inputFirstName">Localidad</label>
+                    </div>
+                  </div>             
+                  <div class="col-md-6 div-add-cartel">
+                    <div class="form-floating">
+                      <div><label for="inputFirstName">Imagen del cartel</label> </div>
                       
-                      <div class="row mb-3">
-                        <label for="inputNumber" class="col-sm-2 col-form-label">Imagen del cartel</label>
-                        <div class="col-sm-10">
-                          <input type="file" name="imagen_cartel" required="" id="id_imagen_cartel">
-                        </div>
-                      </div>
-                  
-                  <div class="text-center">
-                    <button type="submit" style="background: #1558c3;" class="btn btn-primary">Guardar</button>
-                    
-                  </div>
-                </form><!-- End Horizontal Form -->
-    
+                      <input type="file" name="imagen_cartel" required="" id="id_imagen_cartel">
+                      
+                    </div>
+                  </div> 
+                        
+                      
+                </div>
+              
+              <div class="card-footer text-center py-3">
+                <button type="submit" style="background: #1558c3;" class="btn btn-primary">Guardar</button>
               </div>
-            </div>
-        </div>
-    </section>
-
-
+          </form>
+      </div>
+      
+  </div>
+  </div>
 </main>
+   
+
 
 
 {% endblock container %}

@@ -11,7 +11,8 @@ from django.views.generic import CreateView, TemplateView
 import yagmail
 from django.db.models import Count
 from precioProveedor.models import PrecioProveedor
-
+from MapaCarteles.utils import *
+from django.forms import widgets
 
 # Create your views here.
 class CartelTemplateView(TemplateView):
@@ -38,62 +39,55 @@ class CartelTemplateView(TemplateView):
 
     @login_required
     def add_new_cartel(request):
+        localidad = Localidad.objects.all()
+        proveedores = Proveedor.objects.all()
+
         if request.method == 'POST':
             form = CartelForm(request.POST, request.FILES)
-            print(form)
             if form.is_valid():
-                print(form)
                 form.save()
                 messages.success(request, '¡Cartel cargada con exito!')  # Define el mensaje de éxito
                 return redirect('formulario')
             else:
                 messages.error(request, form.errors)
                 form = CartelForm()
-        localidad = Localidad.objects.all()
-        proveedores = Proveedor.objects.all()
+
         
-        context = {'localidad':localidad}
-        context_proveedor = {'proveedores':proveedores}
-        context.update(context_proveedor)
+        
+        context = {'localidad':localidad, 'proveedores':proveedores }
+        
         return render(request,'nuevo_cartel.html', context)
 
     @login_required
     def listado_cartel(request):
         user = request.user.id
         cartel = Cartel.objects.filter(usuario=request.user.id)
-        carteles = Cartel.objects.all()
-        context = {'cartel':cartel}
-        context_carteles = {'carteles':carteles}
-        context.update(context_carteles)
+        lista_carteles = Cartel.objects.all()
+        context = {'cartel':cartel,'carteles':lista_carteles }
+
         return render(request,'listado_cartel.html', context)
     
     def actualizar_cartel(request,pk):
+        
+
         cartel = Cartel.objects.get(id=pk)
         precios = PrecioProveedor.objects.all()
-        context = {'precios': precios}
-        context_cartrel = {'cartel':cartel}
+        context = {'precios': precios, 'cartel':cartel}
 
         precio_metros_actual = cartel.metros_cuadrados_precio
 
         form = CartelForm(instance=cartel)
-        if request.method == 'POST':
-             altura = request.POST['altura']
-             largo = request.POST['largo']
-             metros_final = int(largo) * int(altura)
+        if request.method == 'POST':   
+             metros_final = calcular_metros_cuadrados(request.POST['altura'],request.POST['largo'])
              if request.POST['precio']:
                if request.POST['precio'] == '0':
                    total = 0
                else:
-                precio = request.POST['precio']
-                metros = request.POST['metros_cuadrados']
-                total = int(metros)*int(precio)
-            
-                 
-               
+                total = calcular_precio_por_metro(request.POST['metros_cuadrados'], request.POST['precio'])
+
              form = CartelForm(request.POST, request.FILES,instance=cartel)
              if form.is_valid():
-                if total > 0:
-                    
+                if total > 0: 
                     cartel.metros_cuadrados_precio = total
                 else:
                     cartel.metros_cuadrados_precio = precio_metros_actual
@@ -103,7 +97,7 @@ class CartelTemplateView(TemplateView):
                 return redirect('listado')
              else:
                  return render (request,'actualizar_cartel.html',{'form':form})
-        context.update(context_cartrel)
+        
         return render (request,'actualizar_cartel.html',{'form':form, **context})
     
     def solicitud_usuario(request):
@@ -157,37 +151,24 @@ class CartelTemplateView(TemplateView):
         
         
         return render(request, self.template_name, context)
-    
-    # def view_mapa_filtro(request):
-    #     proveedores = Proveedor.objects.all()
-    #     context = {'provedor':proveedores}
-        
-    #     return render (request, 'mapa.html',context)
+  
     
     def view_dashboard(request):
         proveedores = Proveedor.objects.all()
         localidades = Localidad.objects.all()
         total_proveedores = Cartel.objects.values('localidad_id').annotate(total= Count('localidad_id'))
-        context = {'proveedores':proveedores}
-        context_localidad = {'localidades':localidades}
+
+        context = {'proveedores':proveedores, 'localidades':localidades, 'total_proveedores': total_proveedores}
        
-        context_total_prov = {'total_proveedores': total_proveedores}
-        context.update(context_total_prov)
 
         if request.method == 'POST':
-         
           id_proveedor = request.POST['id_proveedor']
           if (id_proveedor != 0):
             total_final = Cartel.objects.filter(proveedor_id = id_proveedor).values('localidad_id', 'proveedor_id').annotate(total= Count('id'))
-            context_total = {'total_final':total_final}
-            
-            context.update(context_total)
+      
+            context.update({'total_final':total_final})
           else:
               print("error")
-          
-        
-       
-        context.update(context_localidad)
         
         
         return render(request,'dashboard.html', context)
@@ -196,24 +177,19 @@ class CartelTemplateView(TemplateView):
         proveedores = Proveedor.objects.all()
         localidades = Localidad.objects.all()
         
-        context = {'proveedores':proveedores}
-        context_localidad = {'localidades':localidades}
-       
+        context = {'proveedores':proveedores, 'localidades':localidades}
+      
         
         if request.method == 'POST':
          
           id_proveedor = request.POST['id_proveedor']
           if (id_proveedor != 0):
             total_final = Cartel.objects.filter(proveedor_id = id_proveedor).values('localidad_id', 'proveedor_id').annotate(total= Count('id'))
-            context_total = {'total_final':total_final}
-            
-            context.update(context_total)
+           
+            context.update({'total_final':total_final})
           else:
               print("error")
           
-        
-       
-        context.update(context_localidad)
         
         return render(request, 'dashboard_filtros.html', context)
     
