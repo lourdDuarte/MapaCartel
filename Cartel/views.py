@@ -132,8 +132,7 @@ class CartelTemplateView(TemplateView):
                     return redirect('registrarse')
         
         return render(request, 'nuevo_usuario.html')
-
-    @login_required
+    
     def post(self, request, *args, **kwargs):
 
         localidad = request.POST.get('selectLocalidad')
@@ -155,7 +154,7 @@ class CartelTemplateView(TemplateView):
         
         return render(request, self.template_name, context)
   
-    @login_required
+    
     def view_dashboard(request):
         proveedores = Proveedor.objects.all()
         localidades = Localidad.objects.all()
