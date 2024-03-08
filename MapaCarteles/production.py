@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-y^d^*g+ofg)h1iylg46o+!9ak(rvmfo5e+++-&rm=9+a06v-n0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['gestionformosa.wnpower.host']
 
 
 # Application definition
@@ -73,7 +73,7 @@ TEMPLATES = [
 ]
 
 
-
+print(BASE_DIR)
 
 WSGI_APPLICATION = 'MapaCarteles.wsgi.application'
 
@@ -82,12 +82,15 @@ WSGI_APPLICATION = 'MapaCarteles.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+      'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'gestion7_mapa_carteles',
+        'USER': 'gestion7_gestion7',
+        'PASSWORD': 'dbmineco387',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
-
 
 
 # Password validation
@@ -125,16 +128,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-#STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = '/home/gestion7/public_html/static'
+
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
-# Define la ruta donde se guardarán los archivos subidos
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Define la URL de acceso a los archivos subidos
 MEDIA_URL = '/media/'
+# Define la ruta donde se guardarán los archivos subidos
+MEDIA_ROOT = '/home/gestion7/public_html/media'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

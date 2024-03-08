@@ -6,7 +6,8 @@ from .models import PrecioProveedor
 
 
 class PrecioProveedorForm(ModelForm):
-    model = PrecioProveedor
-    fields = '__all__'
-        
-    required = ['descripcio','precio']
+    class Meta:
+        model = PrecioProveedor
+        fields = '__all__'
+            
+        required = '__all__'

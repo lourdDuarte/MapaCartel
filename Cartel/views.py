@@ -60,13 +60,14 @@ class CartelTemplateView(TemplateView):
 
     @login_required
     def listado_cartel(request):
-        user = request.user.id
+       
         cartel = Cartel.objects.filter(usuario=request.user.id)
         lista_carteles = Cartel.objects.all()
         context = {'cartel':cartel,'carteles':lista_carteles }
 
         return render(request,'listado_cartel.html', context)
     
+    @login_required
     def actualizar_cartel(request,pk):
         
 
@@ -100,6 +101,7 @@ class CartelTemplateView(TemplateView):
         
         return render (request,'actualizar_cartel.html',{'form':form, **context})
     
+
     def solicitud_usuario(request):
         destinario = 'lourdes123duarte@gmail.com'
         password = 'badspsaurjkgkxvj'
@@ -131,6 +133,7 @@ class CartelTemplateView(TemplateView):
         
         return render(request, 'nuevo_usuario.html')
 
+    @login_required
     def post(self, request, *args, **kwargs):
 
         localidad = request.POST.get('selectLocalidad')
@@ -152,7 +155,7 @@ class CartelTemplateView(TemplateView):
         
         return render(request, self.template_name, context)
   
-    
+    @login_required
     def view_dashboard(request):
         proveedores = Proveedor.objects.all()
         localidades = Localidad.objects.all()
@@ -172,7 +175,7 @@ class CartelTemplateView(TemplateView):
         
         
         return render(request,'dashboard.html', context)
-   
+    @login_required
     def view_dashboard_filter(request):
         proveedores = Proveedor.objects.all()
         localidades = Localidad.objects.all()
@@ -193,7 +196,7 @@ class CartelTemplateView(TemplateView):
         
         return render(request, 'dashboard_filtros.html', context)
     
-
+    @login_required
     def eliminar_cartel(request, pk):
         request = Cartel.objects.get(id=pk)
         request.delete()

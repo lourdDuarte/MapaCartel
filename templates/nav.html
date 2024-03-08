@@ -16,6 +16,15 @@
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-lock"></i></div>
                         Sitio admin
                     </a>
+                    <div class="sb-sidenav-menu-heading">Precios</div>
+                <a class="nav-link" href="{% url 'listado-precio' %}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-dollar-sign"></i></div>
+                    Lista de precios
+                </a>
+                <a class="nav-link" href="{% url 'nuevo-precio' %}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-plus"></i></div>
+                    Nuevo precio
+                </a>
                 {% endif %}
                 
                 <div class="sb-sidenav-menu-heading">Opciones de carteles</div>
@@ -28,15 +37,7 @@
                     Nuevo Cartel
                 </a>
                 
-                <div class="sb-sidenav-menu-heading">Precios</div>
-                <a class="nav-link" href="{% url 'listado' %}">
-                    <div class="sb-nav-link-icon"><i class="fa-solid fa-dollar-sign"></i></div>
-                    Lista de precios
-                </a>
-                <a class="nav-link" href="{% url 'nuevo-precio' %}">
-                    <div class="sb-nav-link-icon"><i class="fa-solid fa-plus"></i></div>
-                    Nuevo precio
-                </a>
+                
                 <div class="sb-sidenav-menu-heading">Sesion</div>
                 <a class="nav-link" href="{% url 'logout' %}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-right-from-bracket"></i></div>

@@ -35,6 +35,9 @@ urlpatterns = [
     path('logout/', CartelTemplateView.logout_view, name = 'logout'),
     path('registrarse/', CartelTemplateView.solicitud_usuario, name = 'registrarse'),
     path('nuevo-precio/', precio.add_precio, name = 'nuevo-precio'),
+    path('listado-precio/', precio.listado_precios, name = 'listado-precio'),
+    path('actualizar-precio/<str:pk>/', precio.actualizar_precio, name = 'actualizar-precio'),
+    path('eliminar-precio/<str:pk>/', precio.eliminar_precio, name = 'eliminar-precio'),
     
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
